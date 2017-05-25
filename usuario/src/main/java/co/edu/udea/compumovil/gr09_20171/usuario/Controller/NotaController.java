@@ -29,7 +29,7 @@ public class NotaController {
     }
 
     public void ObtenerNotasEstudiante(String materia,String profesor,String grupo,String estudiante){
-        reference.child(materia).child(profesor).child(grupo).child(estudiante)
+        reference.child(materia).child(profesor).child(grupo).child(estudiante).child("NOTAS")
         .addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
