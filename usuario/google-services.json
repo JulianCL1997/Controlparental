@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "1055624887095",
+    "firebase_url": "https://controlparental-6891b.firebaseio.com",
+    "project_id": "controlparental-6891b",
+    "storage_bucket": "controlparental-6891b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055624887095:android:9d90d1f6a9e49618",
+        "android_client_info": {
+          "package_name": "co.edu.udea.compumovil.gr09_20171.controlparental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055624887095-0d321ktg74ikifunhd7lbkj5fr8nakbf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.udea.compumovil.gr09_20171.controlparental",
+            "certificate_hash": "58d9c51b059027f235427a08c4c089940865c6c3"
+          }
+        },
+        {
+          "client_id": "1055624887095-q3nmlrisavucp2tknhltmr58cu6ehul7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMfLykTe6OOhsQzY_qiV6nG55cEJEUork"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055624887095-q3nmlrisavucp2tknhltmr58cu6ehul7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055624887095:android:ac0428647f272510",
+        "android_client_info": {
+          "package_name": "co.edu.udea.compumovil.gr09_20171.usuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055624887095-l1fuqbkc90t9ojph85v5u2depnahfs51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.udea.compumovil.gr09_20171.usuario",
+            "certificate_hash": "58d9c51b059027f235427a08c4c089940865c6c3"
+          }
+        },
+        {
+          "client_id": "1055624887095-q3nmlrisavucp2tknhltmr58cu6ehul7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMfLykTe6OOhsQzY_qiV6nG55cEJEUork"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055624887095-q3nmlrisavucp2tknhltmr58cu6ehul7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
