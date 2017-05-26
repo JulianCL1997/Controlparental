@@ -9,25 +9,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.ControllerMateria;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.CursoMateriaController;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.EstudianteController;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Cursos;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 
 
 public class MainActivity extends AppCompatActivity {
-    List<Cursos> cursoses = new ArrayList<>();
+    List<CursoMateria> cursoses = new ArrayList<>();
     List<Estudiante> estudents = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Thread hiloa = new Thread(new ControllerMateria(), "Hilo a");
+        Thread hiloa = new Thread(new CursoMateriaController(), "Hilo a");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Materias");
 
-        final ControllerMateria materia = new ControllerMateria();
+        final CursoMateriaController materia = new CursoMateriaController();
         final EstudianteController est = new EstudianteController();
 
        /* String key = myRef.push().getKey();

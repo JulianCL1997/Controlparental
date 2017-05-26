@@ -4,11 +4,11 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Model;
  * Created by julian on 21/05/17.
  */
 
-public class Cursos {
+public class CursoMateria {
     String nombre;
     String grupo;
 
-    public Cursos(String nombre, String grupo) {
+    public CursoMateria(String nombre, String grupo) {
         this.nombre = nombre;
         this.grupo = grupo;
     }

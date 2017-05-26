@@ -11,16 +11,16 @@ import java.util.Calendar;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Cursos;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 
 /**
  * Created by julian on 24/05/17.
  */
 
-public class ControllerMateria extends Thread {
+public class CursoMateriaController extends Thread {
     private List<Estudiante> estudiantes;
     private List<String> estudiantesGrupo;
-    private List<Cursos> cursoses;
+    private List<CursoMateria> cursoses;
     private final String REF_MATERIA = "Materias";
     // dos referencias globales para poder usarlas en cualquier punto
     private String REF_PROFESOR;
@@ -32,7 +32,7 @@ public class ControllerMateria extends Thread {
 
     }
 
-    public ControllerMateria() {
+    public CursoMateriaController() {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference(REF_MATERIA);
         estudiantes = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ControllerMateria extends Thread {
                         for (DataSnapshot snap : datesnap.child(profesor).getChildren()) {
                             if (snap.exists()) {
                                 //se toma el nombre de la materia
-                                Cursos value = dataSnapshot.getValue(Cursos.class);
+                                CursoMateria value = dataSnapshot.getValue(CursoMateria.class);
                                 //se toma el grupo de la materia
                                 value.setGrupo(snap.getKey());
                                 //se agrega el grupo a la Lista
@@ -118,11 +118,11 @@ public class ControllerMateria extends Thread {
         this.estudiantes = estudiantes;
     }
 
-    public List<Cursos> getCursoses() {
+    public List<CursoMateria> getCursoses() {
         return cursoses;
     }
 
-    public void setCursoses(List<Cursos> cursoses) {
+    public void setCursoses(List<CursoMateria> cursoses) {
         this.cursoses = cursoses;
     }
 

@@ -2,7 +2,6 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,12 +16,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.AsistenciaAdapter;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.ControllerMateria;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.EstudianteController;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
