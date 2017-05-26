@@ -13,6 +13,9 @@ public class CursoMateria {
         this.grupo = grupo;
     }
 
+    public CursoMateria() {
+    }
+
     public String getNombre() {
         return nombre;
     }
