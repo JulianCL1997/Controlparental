@@ -11,7 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Cursos;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 
 /**
  * Created by julian on 24/05/17.
@@ -20,7 +20,7 @@ import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Cursos;
 public class ControllerMateria extends Thread {
     private List<Estudiante> estudiantes;
     private List<String> estudiantesGrupo;
-    private List<Cursos> cursoses;
+    private List<CursoMateria> cursoMaterias;
     private final String REF_MATERIA = "Materias";
     // dos referencias globales para poder usarlas en cualquier punto
     private String REF_PROFESOR;
@@ -36,7 +36,7 @@ public class ControllerMateria extends Thread {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference(REF_MATERIA);
         estudiantes = new ArrayList<>();
-        cursoses = new ArrayList<>();
+        cursoMaterias = new ArrayList<>();
         estudiantesGrupo = new ArrayList<>();
     }
 
@@ -46,7 +46,7 @@ public class ControllerMateria extends Thread {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //se elimina la lista para no repetir datos
-                cursoses.removeAll(cursoses);
+                cursoMaterias.removeAll(cursoMaterias);
                 //se recorre el dataSnapshot para tener los valores internos de la base de datos
                 for (DataSnapshot datesnap : dataSnapshot.getChildren()) {
                     //se verifica que el profesor dicte esa materia
@@ -55,11 +55,11 @@ public class ControllerMateria extends Thread {
                         for (DataSnapshot snap : datesnap.child(profesor).getChildren()) {
                             if (snap.exists()) {
                                 //se toma el nombre de la materia
-                                Cursos value = dataSnapshot.getValue(Cursos.class);
+                                CursoMateria value = datesnap.getValue(CursoMateria.class);
                                 //se toma el grupo de la materia
                                 value.setGrupo(snap.getKey());
                                 //se agrega el grupo a la Lista
-                                cursoses.add(value);
+                                cursoMaterias.add(value);
                             }
                         }
                     }
@@ -118,12 +118,12 @@ public class ControllerMateria extends Thread {
         this.estudiantes = estudiantes;
     }
 
-    public List<Cursos> getCursoses() {
-        return cursoses;
+    public List<CursoMateria> getCursoMaterias() {
+        return cursoMaterias;
     }
 
-    public void setCursoses(List<Cursos> cursoses) {
-        this.cursoses = cursoses;
+    public void setCursoMaterias(List<CursoMateria> cursoMaterias) {
+        this.cursoMaterias = cursoMaterias;
     }
 
     public List<String> getEstudiantesGrupo() {

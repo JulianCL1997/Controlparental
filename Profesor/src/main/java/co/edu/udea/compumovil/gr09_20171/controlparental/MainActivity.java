@@ -8,15 +8,17 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.ControllerMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.EstudianteController;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Cursos;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 
 
 public class MainActivity extends AppCompatActivity {
-    List<Cursos> cursoses = new ArrayList<>();
+    List<CursoMateria> cursoses = new ArrayList<>();
     List<Estudiante> estudents = new ArrayList<>();
 
     @Override
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         /*myRef.child("Esp01").child("-Kkss-u-cmrJrnjS6sg9")
                 .child("9-2").child("1037655130").ASISTENCIASchild("NOTAS").child("NOTA_3").setValue(3);
 */
-        materia.RegistrarAsistencia("Esp01","-Kkss-u-cmrJrnjS6sg9","9-2","358254312",true);
+        //materia.RegistrarAsistencia("Esp01","-Kkss-u-cmrJrnjS6sg9","9-2","358254312",true);
         //Ejemplo ejecucion multiples metodos asincronos usando temporizadores
         /*
          List<String> lis=new ArrayList<>();
@@ -75,5 +77,16 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(task2,20000);
       timer.schedule(task3,35000);
 */
+
+        TimerTask t=new TimerTask() {
+            @Override
+            public void run() {
+                cursoses=materia.getCursoMaterias();
+            }
+        };
+        Timer timer=new Timer();
+        timer.schedule(t,3000);
+        materia.MateriasDadas("-Kkss-u-cmrJrnjS6sg9");
+
     }
 }

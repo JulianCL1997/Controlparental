@@ -8,6 +8,7 @@ public class Profesor {
     String uid;
     String nombre;
     String apellido;
+    String email;
 
     public Profesor() {
     }
@@ -40,5 +41,13 @@ public class Profesor {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
