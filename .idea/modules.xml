@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Controlparental.iml" filepath="$PROJECT_DIR$/Controlparental.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Controlparental.iml" filepath="$PROJECT_DIR$/Controlparental.iml" />
       <module fileurl="file://$PROJECT_DIR$/Profesor/Profesor.iml" filepath="$PROJECT_DIR$/Profesor/Profesor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Profesor/Profesor.iml" filepath="$PROJECT_DIR$/Profesor/Profesor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/usuario/usuario.iml" filepath="$PROJECT_DIR$/usuario/usuario.iml" />
       <module fileurl="file://$PROJECT_DIR$/usuario/usuario.iml" filepath="$PROJECT_DIR$/usuario/usuario.iml" />
     </modules>
   </component>

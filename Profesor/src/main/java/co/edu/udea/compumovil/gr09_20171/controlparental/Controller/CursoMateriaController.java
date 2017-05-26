@@ -17,7 +17,7 @@ import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
  * Created by julian on 24/05/17.
  */
 
-public class ControllerMateria extends Thread {
+public class CursoMateriaController extends Thread {
     private List<Estudiante> estudiantes;
     private List<String> estudiantesGrupo;
     private List<CursoMateria> cursoMaterias;
@@ -32,7 +32,7 @@ public class ControllerMateria extends Thread {
 
     }
 
-    public ControllerMateria() {
+    public CursoMateriaController() {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference(REF_MATERIA);
         estudiantes = new ArrayList<>();
