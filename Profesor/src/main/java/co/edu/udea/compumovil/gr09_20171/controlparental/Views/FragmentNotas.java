@@ -57,16 +57,6 @@ public class FragmentNotas extends Fragment {
         linearLayoutManager = new LinearLayoutManager(this.getContext());    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-
-
-        // ---  Borrar
-
-
-        // --- Borrar
-
-
-
-
         //Declaramos adaptador e iniciamos recycler
         adapter = new NotasAdapter(estudianteList);
         recyclerView.setAdapter(adapter);

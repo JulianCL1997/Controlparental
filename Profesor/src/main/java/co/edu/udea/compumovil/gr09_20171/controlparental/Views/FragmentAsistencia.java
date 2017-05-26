@@ -29,7 +29,6 @@ public class FragmentAsistencia extends Fragment {
     private List<String> estudiantes;
     private AsistenciaAdapter adapter;
 
-
     //referencias base de datos
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference RefMat;

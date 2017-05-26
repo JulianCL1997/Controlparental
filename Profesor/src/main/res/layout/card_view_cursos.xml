@@ -27,7 +27,7 @@
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Menu" />
 
             <TextView
-                android:id="@+id/curso"
+                android:id="@+id/grado"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -41,7 +41,7 @@
                 android:id="@+id/grupo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignRight="@id/curso"
+                android:layout_alignRight="@id/grado"
                 android:paddingTop="14dp"
                 android:gravity="top"
                 android:textStyle="italic"

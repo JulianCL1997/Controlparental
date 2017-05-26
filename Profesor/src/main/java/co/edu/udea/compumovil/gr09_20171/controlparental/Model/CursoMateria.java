@@ -5,23 +5,33 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Model;
  */
 
 public class CursoMateria {
-    String nombre;
+    String materia;
+    String grado;
     String grupo;
 
-    public CursoMateria(String nombre, String grupo) {
-        this.nombre = nombre;
+    public CursoMateria(String materia, String grado, String grupo) {
+        this.materia = materia;
+        this.grado = grado;
         this.grupo = grupo;
     }
 
     public CursoMateria() {
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getGrado() {
+        return grado;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setGrado(String grado) {
+        this.grado = grado;
+    }
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
     }
 
     public String getGrupo() {
