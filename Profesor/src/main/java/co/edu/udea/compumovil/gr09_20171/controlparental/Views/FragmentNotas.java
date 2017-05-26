@@ -8,10 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.AsistenciaAdapter;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.NotasAdapter;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
@@ -19,11 +26,24 @@ public class FragmentNotas extends Fragment {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
+    private List<String> estudiantes;
     private List<Estudiante> estudianteList;
+    private NotasAdapter adapter;
+
+    //referencias base de datos
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference RefMat;
+    private DatabaseReference RefEst;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RefMat = database.getReference().child("Materias").child("Esp01").child("-Kkss-u-cmrJrnjS6sg9").child("9-2");
+        RefEst = database.getReference().child("Estudiantes");
+
+        //Inicio arreglos
+        estudianteList = new ArrayList<>();
+        estudiantes = new ArrayList<>();
     }
 
     @Override
@@ -31,7 +51,7 @@ public class FragmentNotas extends Fragment {
                              Bundle savedInstanceState) {
         // Declaramos e inicializamos.
         View view = inflater.inflate(R.layout.activity_recycler, container, false);
-        AsistenciaAdapter adapter;
+
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(this.getContext());    // Mirar si tira error.
@@ -41,13 +61,53 @@ public class FragmentNotas extends Fragment {
 
         // ---  Borrar
 
-        lista();
 
         // --- Borrar
 
 
-        adapter = new AsistenciaAdapter(estudianteList);
+
+
+        //Declaramos adaptador e iniciamos recycler
+        adapter = new NotasAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
+        //iniciamos busqueda de los estudiantes del grupo
+        RefMat.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                estudiantes.removeAll(estudiantes);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()
+                        ) {
+                    estudiantes.add(snapshot.getKey());
+
+                }
+                //filtramos estu
+                RefEst.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        estudianteList.removeAll(estudianteList);
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()
+                                ) {
+                            if (estudiantes.contains(snapshot.getKey())) {
+                                Estudiante value = snapshot.getValue(Estudiante.class);
+                                estudianteList.add(value);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         return view;
     }
