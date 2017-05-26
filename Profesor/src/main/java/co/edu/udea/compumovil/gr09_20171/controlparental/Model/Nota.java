@@ -5,10 +5,16 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Model;
  */
 
 public class Nota {
-private String desc;
-private float valor;
+
+    private String desc;
+    private float valor;
 
     public Nota() {
+    }
+
+    public Nota(String desc, float valor) {
+        this.desc = desc;
+        this.valor = valor;
     }
 
     public String getDesc() {
