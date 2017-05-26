@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Views.NotasView;
 
 /**
  * Created by landres.perez on 25/05/17.
@@ -52,8 +54,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Apellidos: " + estudianteList.get(position).getApellido(),
-                        Toast.LENGTH_LONG).show();
+                Intent notasView = new Intent(null, NotasView.class);
             }
         });
     }
@@ -73,6 +74,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
 
         CardView cardView;
         TextView nombre, apellidos;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
