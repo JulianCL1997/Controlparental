@@ -1,34 +1,22 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental;
 
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.ControllerMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Controller.EstudianteController;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Materia;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Cursos;
 
 
 public class MainActivity extends AppCompatActivity {
-    List<Materia> materias = new ArrayList<>();
+    List<Cursos> cursoses = new ArrayList<>();
     List<Estudiante> estudents = new ArrayList<>();
 
     @Override

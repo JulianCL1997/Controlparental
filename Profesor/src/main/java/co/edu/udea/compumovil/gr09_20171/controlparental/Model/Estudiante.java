@@ -11,7 +11,9 @@ public class Estudiante implements Serializable{
     private String nombre;
     private String apellido;
 
-    public Estudiante() {
+    public Estudiante(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     public String getUid() {
