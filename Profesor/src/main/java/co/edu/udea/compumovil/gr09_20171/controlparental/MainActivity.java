@@ -29,10 +29,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference grupo = database.getReference("Materias").child("9").child("a").child("S32GgmaLmCSlNmHiMyJ1dedKcEs1");
-        DatabaseReference estudiante=database.getReference("Estudiantes");
+        DatabaseReference myRef = database.getReference("Materias");
 
+      final String profesor="S32GgmaLmCSlNmHiMyJ1dedKcEs1";
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //List<String> existe=new ArrayList<String>();
+                for (DataSnapshot materias:dataSnapshot.getChildren()
 
+                     ) {
+                    for (DataSnapshot grado:materias.getChildren()
+                         ) {
+                        for (DataSnapshot grupo:grado.getChildren()
+                             ) {
+                            String prueva=grupo.child("profesor").getValue(String.class);
+                            if(profesor.equals(grupo.child("profesor").getValue(String.class))){
+                                if(!existe.contains(materias.getKey())){
+                                    existe.add(materias.getKey());
+                                    CursoMateria value=new CursoMateria(
+                                            materias.getKey(),
+                                            grado.getKey(),
+                                            grupo.getKey(),
+                                            profesor);
+                                    cursos.add(value);
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+                int fin=1+1;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 }

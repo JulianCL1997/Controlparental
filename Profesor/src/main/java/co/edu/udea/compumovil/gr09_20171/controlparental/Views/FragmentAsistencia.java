@@ -41,7 +41,7 @@ public class FragmentAsistencia extends Fragment {
         super.onCreate(savedInstanceState);
         //Inicio referencias
         RefMat = database.getReference("Materias").child("Historia").child("9").child("a");
-        RefEst = database.getReference().child("Estudiantes");
+        RefEst = database.getReference().child("Estudiantes").orderByChild("apellido");
 
         //Inicio arreglos
         estudianteList = new ArrayList<>();
