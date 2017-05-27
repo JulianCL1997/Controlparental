@@ -26,6 +26,4 @@ public class TabProfesor extends FragmentActivity {
         tabhost.addTab(tabhost.newTabSpec("notas").setIndicator(getString(R.string.notas)),
                 FragmentNotas.class, null); // Notas.
     }
-
-
 }

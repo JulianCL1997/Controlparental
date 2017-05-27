@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="materia">#4c5863</color>
+    <color name="grado">#82929b</color>
+
+    <!-- Colores de cards -->
+    <color name="carview_color1">#D0DCE4</color>
+    <color name="cardview_color2">#E7E7E8</color>
+
 </resources>

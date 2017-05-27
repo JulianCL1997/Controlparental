@@ -22,6 +22,7 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
 
     private List<CursoMateria> materiaList;
     private Context context = null;
+    private boolean var = true;
 
     public CursoMateriaAdapter(List<CursoMateria> materiaList) {
         this.materiaList = materiaList;
@@ -72,6 +73,8 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        private int colorCardView1, colorCardView2;
+
         CardView cardView;
         TextView materia, grado, grupo;
 
@@ -82,6 +85,22 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
             materia = (TextView) itemView.findViewById(R.id.materia);
             grado = (TextView) itemView.findViewById(R.id.grado);
             grupo = (TextView) itemView.findViewById(R.id.grupo);
+
+            changeColorCardViews(itemView);
+        }
+
+        private void changeColorCardViews(View itemView) {
+
+            colorCardView1 = itemView.getResources().getColor(R.color.carview_color1);
+            colorCardView2 = itemView.getResources().getColor(R.color.cardview_color2);
+
+            if (var) {
+                cardView.setCardBackgroundColor(colorCardView2);
+            } else {
+                cardView.setCardBackgroundColor(colorCardView1);
+            }
+
+            var = !var;
         }
     }
 }
