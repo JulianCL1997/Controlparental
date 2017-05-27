@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +23,6 @@ public class CursoMateriaView extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private List<CursoMateria> cursoMateriasList;
-    private CursoMateriaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,14 @@ public class CursoMateriaView extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        recyclerView.setAdapter(adapter);
-
         iniciar();
+
     }
 
     private void iniciar() {
+
+        CursoMateriaAdapter adapter;
+
         cursoMateriasList = new ArrayList<>();
 
         cursoMateriasList.add(new CursoMateria("Sociales", "10", "a"));
@@ -54,5 +56,7 @@ public class CursoMateriaView extends AppCompatActivity {
         cursoMateriasList.add(new CursoMateria("Biologia", "10", "d"));
 
         adapter = new CursoMateriaAdapter(cursoMateriasList);
+
+        recyclerView.setAdapter(adapter);
     }
 }
