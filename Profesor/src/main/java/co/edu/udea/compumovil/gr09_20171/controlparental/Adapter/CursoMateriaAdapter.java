@@ -53,6 +53,7 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(context, "Materia: " + materiaList.get(position).getMateria(),
                         Toast.LENGTH_LONG).show();
             }

@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -32,14 +33,14 @@ public class FragmentAsistencia extends Fragment {
     //referencias base de datos
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference RefMat;
-    private DatabaseReference RefEst;
+    private Query RefEst;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Inicio referencias
-        RefMat = database.getReference().child("Materias").child("Esp01").child("-Kkss-u-cmrJrnjS6sg9").child("9-2");
+        RefMat = database.getReference("Materias").child("Historia").child("9").child("a");
         RefEst = database.getReference().child("Estudiantes");
 
         //Inicio arreglos
@@ -68,10 +69,11 @@ public class FragmentAsistencia extends Fragment {
                 estudiantes.removeAll(estudiantes);
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()
                         ) {
+                    if(!"profesor".equals(snapshot.getKey())&&!"grupo".equals(snapshot.getKey()))
                     estudiantes.add(snapshot.getKey());
 
                 }
-                //filtramos estu
+                //filtramos estudiantes
                 RefEst.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,6 +85,7 @@ public class FragmentAsistencia extends Fragment {
                                 estudianteList.add(value);
                             }
                         }
+
                         adapter.notifyDataSetChanged();
                     }
 

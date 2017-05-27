@@ -7,6 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,36 +33,61 @@ public class CursoMateriaView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        cursoMateriasList=new ArrayList<>();
         // Si se piensa agregar un nuevo botón. Hay que crear un nuevo layout, dado que ese uso para meterlos todos :v.
         setContentView(R.layout.activity_recycler);
 
-        recyclerView = (RecyclerView) findViewById(R.id.card_view_cursos);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(this);    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-
-        iniciar();
-
-    }
-
-    private void iniciar() {
-
-        CursoMateriaAdapter adapter;
-
-        cursoMateriasList = new ArrayList<>();
-
-        cursoMateriasList.add(new CursoMateria("Sociales", "10", "a"));
-        cursoMateriasList.add(new CursoMateria("Sociales", "10", "b"));
-        cursoMateriasList.add(new CursoMateria("Sociales", "10", "c"));
-        cursoMateriasList.add(new CursoMateria("Sociales", "10", "d"));
-
-        cursoMateriasList.add(new CursoMateria("Biologia", "10", "a"));
-        cursoMateriasList.add(new CursoMateria("Biologia", "10", "b"));
-        cursoMateriasList.add(new CursoMateria("Biologia", "10", "c"));
-        cursoMateriasList.add(new CursoMateria("Biologia", "10", "d"));
-
-        adapter = new CursoMateriaAdapter(cursoMateriasList);
-
+        final CursoMateriaAdapter adapter = new CursoMateriaAdapter(cursoMateriasList);
         recyclerView.setAdapter(adapter);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Materias");
+
+        final String profesor="S32GgmaLmCSlNmHiMyJ1dedKcEs1";
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                cursoMateriasList.removeAll(cursoMateriasList);
+                for (DataSnapshot materias:dataSnapshot.getChildren()
+
+                        ) {
+                    for (DataSnapshot grado:materias.getChildren()
+                            ) {
+                        for (DataSnapshot grupo:grado.getChildren()
+                                ) {
+                            String prueva=grupo.child("profesor").getValue(String.class);
+                            if(profesor.equals(grupo.child("profesor").getValue(String.class))){
+                                    CursoMateria value=new CursoMateria(
+                                            materias.getKey(),
+                                            grado.getKey(),
+                                            grupo.getKey(),
+                                            profesor
+                                    );
+                                    cursoMateriasList.add(value);
+                                }
+                            }
+
+                        }
+
+                    }
+adapter.notifyDataSetChanged();
+                }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
     }
+
 }
