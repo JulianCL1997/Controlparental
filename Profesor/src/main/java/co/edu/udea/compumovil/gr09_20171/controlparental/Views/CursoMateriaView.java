@@ -30,13 +30,12 @@ public class CursoMateriaView extends AppCompatActivity {
         // Si se piensa agregar un nuevo botón. Hay que crear un nuevo layout, dado que ese uso para meterlos todos :v.
         setContentView(R.layout.activity_recycler);
 
-        recyclerView = (RecyclerView) findViewById(R.id.card_view_cursos);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(this);    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
         iniciar();
-
     }
 
     private void iniciar() {
