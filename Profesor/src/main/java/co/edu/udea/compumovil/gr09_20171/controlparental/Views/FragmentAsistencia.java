@@ -73,6 +73,7 @@ public class FragmentAsistencia extends Fragment {
                     estudiantes.add(snapshot.getKey());
 
                 }
+
                 //filtramos estudiantes
                 RefEst.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
