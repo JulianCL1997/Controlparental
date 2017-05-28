@@ -4,6 +4,10 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
@@ -30,6 +34,23 @@ public class TabProfesor extends AppCompatActivity {
 
         tabhost.addTab(tabhost.newTabSpec("notas").setIndicator(getString(R.string.notas)),
                 FragmentNotas.class, bundle); // Notas.
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.navigation_tabhost, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (R.id.logout_menu == item.getItemId()) {
+            Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

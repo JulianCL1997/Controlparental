@@ -11,6 +11,6 @@
     <string name="login_title">Autenticación</string>
     <string name="user_name">Usuario</string>
     <string name="password">Contraseña</string>
-    <string name="logout">Cerrar sesión.</string>
+    <string name="logout">Cerrar sesión</string>
 
 </resources>

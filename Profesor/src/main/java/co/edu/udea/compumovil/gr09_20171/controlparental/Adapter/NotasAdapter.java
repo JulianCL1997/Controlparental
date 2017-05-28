@@ -57,7 +57,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
                 CambiarNota cambiarNota = new CambiarNota();
                 FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();;
 
-                cambiarNota.show(fragmentManager, "a");
+                //cambiarNota.show(fragmentManager, "a");
             }
         });
     }

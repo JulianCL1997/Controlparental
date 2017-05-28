@@ -11,6 +11,8 @@
         android:orientation="vertical"
         app:menu="@menu/navigation_tabhost">
 
+
+
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
