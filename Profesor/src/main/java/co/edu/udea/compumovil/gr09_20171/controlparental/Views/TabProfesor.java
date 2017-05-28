@@ -1,6 +1,5 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +38,7 @@ public class TabProfesor extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.navigation_tabhost, menu);
+        menuInflater.inflate(R.menu.menu_tabhost, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -47,8 +46,8 @@ public class TabProfesor extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (R.id.logout_menu == item.getItemId()) {
-            Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+        if (R.id.regresar == item.getItemId()) {
+            Toast.makeText(this, "Regresar", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);

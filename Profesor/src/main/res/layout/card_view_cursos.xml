@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
+    android:layout_margin="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="4dp"
         android:id="@+id/card_view_cursos"
-        app:cardCornerRadius="6dp" >
+        app:cardCornerRadius="2dp"
+        app:cardElevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,7 +26,7 @@
                 android:layout_alignParentLeft="true"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:paddingTop="15dp"
+                android:paddingTop="1dp"
                 android:gravity="top"
                 android:textColor="@color/materia"
                 android:textAllCaps="true"/>
@@ -33,9 +35,11 @@
                 android:id="@+id/grado"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
+                android:layout_alignRight="@+id/grupo"
                 android:layout_alignParentBottom="true"
-                android:paddingRight="25dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="5dp"
+                android:text="asdasd"
                 android:gravity="bottom"
                 android:textSize="40dp"
                 android:textColor="@color/grado"/>
@@ -44,8 +48,8 @@
                 android:id="@+id/grupo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignRight="@id/grado"
-                android:paddingTop="14dp"
+                android:layout_alignParentRight="true"
+                android:paddingTop="8dp"
                 android:gravity="top"
                 android:textStyle="italic"
                 android:textSize="30dp"

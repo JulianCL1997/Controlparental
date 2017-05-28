@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Views.TabProfesor">
+    tools:context=".Views.CursoMateriaView">
 
     <item
-        android:id="@+id/logout_menu"
+        android:id="@+id/logout"
         android:title="@string/logout"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
 
 </menu>
