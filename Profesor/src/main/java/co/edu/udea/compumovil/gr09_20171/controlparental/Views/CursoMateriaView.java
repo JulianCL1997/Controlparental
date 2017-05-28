@@ -28,6 +28,7 @@ public class CursoMateriaView extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private List<CursoMateria> cursoMateriasList;
+    private CursoMateriaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,30 +40,33 @@ public class CursoMateriaView extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
+        cursoMateriasList=new ArrayList<>();
+adapter=new CursoMateriaAdapter(cursoMateriasList);
+        recyclerView.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Materias");
-        final String profesor="S32GgmaLmCSlNmHiMyJ1dedKcEs1";
+        final String profesor = "S32GgmaLmCSlNmHiMyJ1dedKcEs1";
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot materias:dataSnapshot.getChildren()
+                cursoMateriasList.removeAll(cursoMateriasList);
+                for (DataSnapshot materias : dataSnapshot.getChildren()
 
                         ) {
-                    for (DataSnapshot grado:materias.getChildren()
+                    for (DataSnapshot grado : materias.getChildren()
                             ) {
-                        for (DataSnapshot grupo:grado.getChildren()
+                        for (DataSnapshot grupo : grado.getChildren()
                                 ) {
-                            String prueva=grupo.child("profesor").getValue(String.class);
-                            if(profesor.equals(grupo.child("profesor").getValue(String.class))){
+                            String prueva = grupo.child("profesor").getValue(String.class);
+                            if (profesor.equals(grupo.child("profesor").getValue(String.class))) {
 
-                                    CursoMateria value=new CursoMateria(
-                                            materias.getKey(),
-                                            grado.getKey(),
-                                            grupo.getKey(),
-                                            profesor);
-                                    cursoMateriasList.add(value);
+                                CursoMateria value = new CursoMateria(
+                                        materias.getKey(),
+                                        grado.getKey(),
+                                        grupo.getKey(),
+                                        profesor);
+                                cursoMateriasList.add(value);
 
                             }
 
@@ -71,7 +75,7 @@ public class CursoMateriaView extends AppCompatActivity {
                     }
 
                 }
-                int fin=1+1;
+adapter.notifyDataSetChanged();
             }
 
             @Override

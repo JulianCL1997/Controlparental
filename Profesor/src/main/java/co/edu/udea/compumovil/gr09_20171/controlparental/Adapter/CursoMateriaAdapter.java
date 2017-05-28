@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

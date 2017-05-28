@@ -63,14 +63,14 @@ public class FragmentAsistencia extends Fragment {
         adapter = new AsistenciaAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
         //iniciamos busqueda de los estudiantes del grupo
-        RefMat.addListenerForSingleValueEvent(new ValueEventListener() {
+        RefMat.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 estudiantes.removeAll(estudiantes);
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()
                         ) {
-                    if(!"profesor".equals(snapshot.getKey())&&!"grupo".equals(snapshot.getKey()))
-                    estudiantes.add(snapshot.getKey());
+                    if (!"profesor".equals(snapshot.getKey()) && !"grupo".equals(snapshot.getKey()))
+                        estudiantes.add(snapshot.getKey());
 
                 }
 
