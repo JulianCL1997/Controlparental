@@ -56,8 +56,8 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (context, TabProfesor.class);
-                intent.putExtra("materia",materiaList.get(position) );
+                Intent intent = new Intent(context, TabProfesor.class);
+                intent.putExtra("materia", materiaList.get(position));
                 context.startActivity(intent);
 
             }

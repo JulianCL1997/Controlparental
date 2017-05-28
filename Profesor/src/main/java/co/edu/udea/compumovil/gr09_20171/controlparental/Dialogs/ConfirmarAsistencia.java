@@ -31,14 +31,18 @@ public class ConfirmarAsistencia extends DialogFragment {
 
         //se crea el alertdialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
         //agregamos mensaje del dialogo
         builder.setMessage(getString(R.string.ConfirmaAsistencia)
-                +estudiante.getNombre()+" "+estudiante.getApellido()+"?")
+                + estudiante.getNombre() + " " + estudiante.getApellido() + "?")
+
                 //agregamos titulo
                 .setTitle("Confirmar asistencia")
+
                 //se pude dar nombre al boton
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
                         //funcion para agregar asistencia
                         //toma la fecha del dispositivo
                         Calendar calendar = Calendar.getInstance();
@@ -46,6 +50,7 @@ public class ConfirmarAsistencia extends DialogFragment {
                         String mes = String.valueOf(calendar.get(calendar.MONTH) + 1);
                         String anio = String.valueOf(calendar.get(calendar.YEAR));
                         String fecha = dia + "-" + mes + "-" + anio;
+
                         //metodos de firebase
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference reference = database.getReference("Materias");
@@ -66,6 +71,5 @@ public class ConfirmarAsistencia extends DialogFragment {
                 });
 
         return builder.create();
-
     }
 }

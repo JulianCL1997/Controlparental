@@ -40,7 +40,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(NotasAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final NotasAdapter.ViewHolder holder, final int position) {
              /*
         * Se editan los campos de los TextViews
         * */
@@ -55,10 +55,9 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 CambiarNota cambiarNota = new CambiarNota();
-                FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+                FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();;
 
-                //cambiarNota.show(fragmentManager, "");
-
+                cambiarNota.show(fragmentManager, "a");
             }
         });
     }

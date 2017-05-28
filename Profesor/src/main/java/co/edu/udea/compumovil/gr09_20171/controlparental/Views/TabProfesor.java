@@ -18,8 +18,8 @@ public class TabProfesor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_profesor);
         materia = (CursoMateria) getIntent().getSerializableExtra("materia");
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("materia",materia);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("materia", materia);
         tabhost = (FragmentTabHost) findViewById(R.id.tabhost);
 
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent); //Define el contenedor

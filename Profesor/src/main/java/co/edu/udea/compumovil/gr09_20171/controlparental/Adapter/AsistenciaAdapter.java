@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -51,9 +50,9 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
 
         holder.apellidos.setText(estudianteList.get(position).getApellido());
         holder.nombre.setText(estudianteList.get(position).getNombre());
-        if(estudianteList.get(position).isAsistencia()){
+        if (estudianteList.get(position).isAsistencia()) {
             holder.cardView.setBackgroundColor(holder.color2);
-        }else{
+        } else {
             holder.cardView.setBackgroundColor(holder.color1);
         }
 
@@ -75,7 +74,7 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
                     dialogo.show(fragmentManager, "tagAlerta");
                 }
                 //Toast.makeText(context, "Apellidos: " + estudianteList.get(position).getApellido(),
-                  //    Toast.LENGTH_LONG).show();
+                //    Toast.LENGTH_LONG).show();
             }
         });
 
@@ -103,14 +102,9 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
             cardView = (CardView) itemView.findViewById(R.id.card_view_nota_asis);
             nombre = (TextView) itemView.findViewById(R.id.nombre_estudiante);
             apellidos = (TextView) itemView.findViewById(R.id.apellido_estudiante);
+
             color1 = itemView.getResources().getColor(R.color.negative_assistence);
             color2 = itemView.getResources().getColor(R.color.positive_assistence);
-
-
-
         }
-
-
-
     }
 }

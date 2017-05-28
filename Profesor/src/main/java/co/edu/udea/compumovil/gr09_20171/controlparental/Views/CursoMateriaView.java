@@ -44,14 +44,14 @@ public class CursoMateriaView extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        cursoMateriasList=new ArrayList<>();
-adapter=new CursoMateriaAdapter(cursoMateriasList);
+        cursoMateriasList = new ArrayList<>();
+        adapter = new CursoMateriaAdapter(cursoMateriasList);
         recyclerView.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Materias");
         //final String profesor = user.getUid();
-        final String profesor="S32GgmaLmCSlNmHiMyJ1dedKcEs1";//valor para pruebas sin login
+        final String profesor = "QZqTq4NxzeNiNNv4XQtOxjLQPwJ2";//valor para pruebas sin login
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -80,7 +80,7 @@ adapter=new CursoMateriaAdapter(cursoMateriasList);
                     }
 
                 }
-adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -88,9 +88,5 @@ adapter.notifyDataSetChanged();
 
             }
         });
-
-
     }
-
-
 }

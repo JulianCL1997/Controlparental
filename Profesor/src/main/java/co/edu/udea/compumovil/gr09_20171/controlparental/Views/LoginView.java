@@ -25,7 +25,6 @@ public class LoginView extends FragmentActivity {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +37,8 @@ public class LoginView extends FragmentActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d("Auth", "onAuthStateChanged:signed_in:" + user.getUid());
-                    //toMaterias();//inicia materias
-                   // FirebaseAuth.getInstance().signOut();//adios conexion
+                    toMaterias();//inicia materias
+                    //FirebaseAuth.getInstance().signOut();//adios conexion
                 } else {
                     // User is signed out
                     Log.d("Auth", "onAuthStateChanged:signed_out");
@@ -59,7 +58,7 @@ public class LoginView extends FragmentActivity {
             public void onClick(View v) {
                 String email = username_tv.getText().toString() + "@edu.co";
                 String pass = password_tv.getText().toString();
-                login(email,pass);
+                login(email, pass);
                 Toast.makeText(getApplicationContext(), username_tv.getText(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -79,11 +78,12 @@ public class LoginView extends FragmentActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-//metodo de login definido por firebase
-    private void login(String email,String password){
+
+    //metodo de login definido por firebase
+    private void login(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    public static final String TAG ="Auth2" ;
+                    public static final String TAG = "Auth2";
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -102,7 +102,8 @@ public class LoginView extends FragmentActivity {
                     }
                 });
     }
-    private void toMaterias(){
+
+    private void toMaterias() {
         Intent intent = new Intent(LoginView.this, CursoMateriaView.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

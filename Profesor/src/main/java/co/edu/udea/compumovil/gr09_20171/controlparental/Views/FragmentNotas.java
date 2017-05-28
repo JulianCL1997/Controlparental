@@ -36,12 +36,12 @@ public class FragmentNotas extends Fragment {
     //referencias base de datos
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference RefMat;
-    private Query  RefEst;
+    private Query RefEst;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        materia=(CursoMateria)getArguments().getSerializable("materia");
+        materia = (CursoMateria) getArguments().getSerializable("materia");
         RefMat = database.getReference("Materias").child(materia.getMateria()).
                 child(materia.getGrado()).child(materia.getGrupo());
         RefEst = database.getReference().child("Estudiantes").orderByChild("apellido");
@@ -56,14 +56,15 @@ public class FragmentNotas extends Fragment {
         // Declaramos e inicializamos.
         View view = inflater.inflate(R.layout.activity_recycler, container, false);
 
-
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(this.getContext());    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
+
         //Declaramos adaptador e iniciamos recycler
         adapter = new NotasAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
+
         //iniciamos busqueda de los estudiantes del grupo
         RefMat.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

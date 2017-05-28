@@ -10,11 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity"> </activity>
+        <activity
+            android:name=".MainActivity"> </activity>
 
-        <activity android:name=".Views.TabProfesor"></activity>
+        <activity
+            android:name=".Views.TabProfesor"
+            android:screenOrientation="portrait">
 
-        <activity android:name=".Views.CursoMateriaView">
+        </activity>
+
+        <activity
+            android:name=".Views.CursoMateriaView"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,14 +31,9 @@
 
         <activity
             android:name=".Views.LoginView"
-            android:screenOrientation="portrait">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:screenOrientation="portrait" >
         </activity>
+
     </application>
 
 </manifest>

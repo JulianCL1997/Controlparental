@@ -56,7 +56,7 @@ public class FragmentAsistencia extends Fragment {
         //Inicio arreglos
         estudianteList = new ArrayList<>();
         estudiantes = new ArrayList<String>();
-        asisEstudiante=new ArrayList<>();
+        asisEstudiante = new ArrayList<>();
         //fecha del celular
         Calendar calendar = Calendar.getInstance();
         String dia = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
@@ -116,7 +116,7 @@ public class FragmentAsistencia extends Fragment {
                                 ) {
                             if (estudiantes.contains(snapshot.getKey())) {
                                 AsistenciaEstudiante value = snapshot.getValue(AsistenciaEstudiante.class);
-                                boolean tes=asisEstudiante.get(estudiantes.indexOf(snapshot.getKey()));
+                                boolean tes = asisEstudiante.get(estudiantes.indexOf(snapshot.getKey()));
                                 value.setAsistencia(tes);
                                 estudianteList.add(value);
                                 //se confirma estado de la asistencia
@@ -139,7 +139,8 @@ public class FragmentAsistencia extends Fragment {
 
                                             }
                                         });
-                            */}
+                            */
+                            }
                         }
                         adapter.notifyDataSetChanged();
                     }
