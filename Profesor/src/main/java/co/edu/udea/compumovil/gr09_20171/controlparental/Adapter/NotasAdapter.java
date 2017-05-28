@@ -1,20 +1,20 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
+import co.edu.udea.compumovil.gr09_20171.controlparental.Dialogs.CambiarNota;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Views.NotasView;
 
 /**
  * Created by landres.perez on 25/05/17.
@@ -54,6 +54,10 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CambiarNota cambiarNota = new CambiarNota();
+                FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+
+                //cambiarNota.show(fragmentManager, "");
 
             }
         });

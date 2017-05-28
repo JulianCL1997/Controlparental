@@ -1,17 +1,16 @@
 <resources>
     <string name="app_name">Controlparental</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="asistencia">Asistencia</string>
     <string name="notas">Notas</string>
     <string name="Asistencia_Confirmada">Asistencia confirmada</string>
     <string name="ConfirmaAsistencia">¿Confirma la asistencia de</string>
+    <string name="aceptar">Aceptar</string>
 
     <!-- Login -->
     <string name="login_title">Autenticación</string>
     <string name="user_name">Usuario</string>
     <string name="password">Contraseña</string>
+    <string name="logout">Cerrar sesión.</string>
 
 </resources>

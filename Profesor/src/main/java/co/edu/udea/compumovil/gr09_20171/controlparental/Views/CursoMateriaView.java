@@ -58,7 +58,7 @@ adapter=new CursoMateriaAdapter(cursoMateriasList);
                             ) {
                         for (DataSnapshot grupo : grado.getChildren()
                                 ) {
-                            String prueva = grupo.child("profesor").getValue(String.class);
+                            String prueba = grupo.child("profesor").getValue(String.class);
                             if (profesor.equals(grupo.child("profesor").getValue(String.class))) {
 
                                 CursoMateria value = new CursoMateria(
