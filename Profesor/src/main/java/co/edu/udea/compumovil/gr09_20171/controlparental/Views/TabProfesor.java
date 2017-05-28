@@ -4,26 +4,31 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
 public class TabProfesor extends FragmentActivity {
 
     private FragmentTabHost tabhost;
+    private CursoMateria materia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_profesor);
-
+        materia = (CursoMateria) getIntent().getSerializableExtra("materia");
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("materia",materia);
         tabhost = (FragmentTabHost) findViewById(R.id.tabhost);
 
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent); //Define el contenedor
 
         // Agregar elementos.
         tabhost.addTab(tabhost.newTabSpec("asistencia").setIndicator(getString(R.string.asistencia)),
-                FragmentAsistencia.class, null); // Asistencia.
+                FragmentAsistencia.class, bundle); // Asistencia.
 
         tabhost.addTab(tabhost.newTabSpec("notas").setIndicator(getString(R.string.notas)),
-                FragmentNotas.class, null); // Notas.
+                FragmentNotas.class, bundle); // Notas.
+
     }
 }

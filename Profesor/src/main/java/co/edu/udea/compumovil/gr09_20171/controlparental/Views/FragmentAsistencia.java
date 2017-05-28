@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.AsistenciaAdapter;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
@@ -29,6 +30,7 @@ public class FragmentAsistencia extends Fragment {
     private List<Estudiante> estudianteList;
     private List<String> estudiantes;
     private AsistenciaAdapter adapter;
+    private CursoMateria materia;
 
     //referencias base de datos
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -40,7 +42,9 @@ public class FragmentAsistencia extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Inicio referencias
-        RefMat = database.getReference("Materias").child("Historia").child("9").child("a");
+        materia=(CursoMateria)getArguments().getSerializable("materia");
+        RefMat = database.getReference("Materias").child(materia.getMateria()).
+                child(materia.getGrado()).child(materia.getGrupo());
         RefEst = database.getReference().child("Estudiantes").orderByChild("apellido");
 
         //Inicio arreglos

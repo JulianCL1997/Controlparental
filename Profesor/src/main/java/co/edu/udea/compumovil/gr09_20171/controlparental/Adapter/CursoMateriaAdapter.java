@@ -14,6 +14,7 @@ import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Views.TabProfesor;
 
 /**
  * Created by landres.perez on 25/05/17.
@@ -55,9 +56,10 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent (context, TabProfesor.class);
+                intent.putExtra("materia",materiaList.get(position) );
+                context.startActivity(intent);
 
-                Toast.makeText(context, "Materia: " + materiaList.get(position).getMateria(),
-                        Toast.LENGTH_LONG).show();
             }
         });
     }

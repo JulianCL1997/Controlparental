@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.AsistenciaAdapter;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.NotasAdapter;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
@@ -29,18 +31,20 @@ public class FragmentNotas extends Fragment {
     private List<String> estudiantes;
     private List<Estudiante> estudianteList;
     private NotasAdapter adapter;
+    private CursoMateria materia;
 
     //referencias base de datos
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference RefMat;
-    private DatabaseReference RefEst;
+    private Query  RefEst;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RefMat = database.getReference().child("Materias").child("Esp01").child("-Kkss-u-cmrJrnjS6sg9").child("9-2");
-        RefEst = database.getReference().child("Estudiantes");
-
+        materia=(CursoMateria)getArguments().getSerializable("materia");
+        RefMat = database.getReference("Materias").child(materia.getMateria()).
+                child(materia.getGrado()).child(materia.getGrupo());
+        RefEst = database.getReference().child("Estudiantes").orderByChild("apellido");
         //Inicio arreglos
         estudianteList = new ArrayList<>();
         estudiantes = new ArrayList<>();
@@ -67,7 +71,8 @@ public class FragmentNotas extends Fragment {
                 estudiantes.removeAll(estudiantes);
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()
                         ) {
-                    estudiantes.add(snapshot.getKey());
+                    if (!"profesor".equals(snapshot.getKey()) && !"grupo".equals(snapshot.getKey()))
+                        estudiantes.add(snapshot.getKey());
 
                 }
                 //filtramos estu
