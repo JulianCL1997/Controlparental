@@ -74,8 +74,8 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
                     dialogo.setArguments(bundle);
                     dialogo.show(fragmentManager, "tagAlerta");
                 }
-                Toast.makeText(context, "Apellidos: " + estudianteList.get(position).getApellido(),
-                      Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, "Apellidos: " + estudianteList.get(position).getApellido(),
+                  //    Toast.LENGTH_LONG).show();
             }
         });
 
