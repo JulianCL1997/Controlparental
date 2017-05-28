@@ -1,42 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo_total"
     tools:context="co.edu.udea.compumovil.gr09_20171.controlparental.Views.LoginView">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_horizontal_margin">
+        android:background="@color/fondo_total" >
+
+        <TextView
+            android:id="@+id/title_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingTop="40dp"
+            android:text="@string/login_title"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:textColor="#ffff"
+            android:elevation="4dp"/>
 
         <ImageView
             android:id="@+id/image_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/title_login"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/finger_login" />
+            android:src="@mipmap/finger_login"
+            android:elevation="5dp"/>
 
-        <EditText
-            android:id="@+id/user_name"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image_login"
-            android:paddingTop="20dp"
-            android:hint="User Name"
-            android:gravity="center_horizontal"/>
+            android:layout_below="@id/title_login"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            android:paddingTop="40dp"
+            android:background="@color/blanco"
+            android:elevation="4dp">
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/user_name"
-            android:paddingTop="20dp"
-            android:hint="password"
-            android:gravity="center_horizontal"/>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/container_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:elevation="2dp">
+
+                <EditText
+                    android:id="@+id/user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="@string/user_name"
+                    android:imeOptions="actionNext"
+                    android:gravity="clip_horizontal"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/container_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/container_username"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:elevation="2dp">
+
+            <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="@string/password"
+                    android:imeOptions="actionSend"
+                    android:gravity="clip_horizontal"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/container_password"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="30dp"
+                android:elevation="8dp"
+                android:text="Ingresar"
+                android:background="@color/customPrimary"
+                android:textColor="#fff"
+                android:shadowColor="#000"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
-</LinearLayout>
+</ScrollView>

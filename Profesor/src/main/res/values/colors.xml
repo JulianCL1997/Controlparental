@@ -3,11 +3,21 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="materia">#4c5863</color>
-    <color name="grado">#82929b</color>
+
+
+    <!-- Amber material palette -->
+    <color name="customPrimary">#00897b</color>
+    <color name="customPrimary_dark">#005b4f</color>
+    <color name="customPrimary_ligth">#4ebaaa</color>
 
     <!-- Colores de cards -->
+    <color name="materia">#4c5863</color>
+    <color name="grado">#82929b</color>
     <color name="carview_color1">#D0DCE4</color>
     <color name="cardview_color2">#E7E7E8</color>
+
+    <!-- Login -->
+    <color name="fondo_total">#31978d</color>
+    <color name="blanco">#f6f7f7</color>
 
 </resources>

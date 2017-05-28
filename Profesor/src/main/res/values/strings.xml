@@ -8,4 +8,10 @@
     <string name="notas">Notas</string>
     <string name="Asistencia_Confirmada">Asistencia confirmada</string>
     <string name="ConfirmaAsistencia">¿Confirma la asistencia de</string>
+
+    <!-- Login -->
+    <string name="login_title">Autenticación</string>
+    <string name="user_name">Usuario</string>
+    <string name="password">Contraseña</string>
+
 </resources>
