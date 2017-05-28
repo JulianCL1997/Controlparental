@@ -29,6 +29,7 @@
                 android:paddingTop="1dp"
                 android:gravity="top"
                 android:textColor="@color/materia"
+                android:maxLength="15"
                 android:textAllCaps="true"/>
 
             <TextView
@@ -39,7 +40,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginRight="10dp"
                 android:paddingTop="5dp"
-                android:text="asdasd"
+                android:maxLength="3"
                 android:gravity="bottom"
                 android:textSize="40dp"
                 android:textColor="@color/grado"/>
@@ -53,6 +54,7 @@
                 android:gravity="top"
                 android:textStyle="italic"
                 android:textSize="30dp"
+                android:maxLength="3"
                 android:textColor="@color/grado"/>
 
         </RelativeLayout>

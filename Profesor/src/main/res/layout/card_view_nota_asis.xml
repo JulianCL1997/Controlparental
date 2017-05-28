@@ -26,7 +26,8 @@
                 android:textSize="20sp"
                 android:textAllCaps="true"
                 android:textStyle="bold"
-                android:textColor="@color/materia" />
+                android:textColor="@color/materia"
+                android:maxLength="26"/>
 
             <TextView
                 android:id="@+id/nombre_estudiante"
@@ -35,7 +36,8 @@
                 android:layout_below="@id/apellido_estudiante"
                 android:textSize="15sp"
                 android:textAllCaps="true"
-                android:textColor="@color/materia"  />
+                android:textColor="@color/materia"
+                android:maxLength="26"/>
 
         </RelativeLayout>
 

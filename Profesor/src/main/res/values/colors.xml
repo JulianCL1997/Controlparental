@@ -4,8 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-
-    <!-- Amber material palette -->
+    <!-- Custom material palette -->
     <color name="customPrimary">#00897b</color>
     <color name="customPrimary_dark">#005b4f</color>
     <color name="customPrimary_ligth">#4ebaaa</color>
