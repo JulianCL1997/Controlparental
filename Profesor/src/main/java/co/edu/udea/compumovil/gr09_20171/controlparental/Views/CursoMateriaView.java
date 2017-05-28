@@ -50,7 +50,7 @@ adapter=new CursoMateriaAdapter(cursoMateriasList);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Materias");
-      //  final String profesor = user.getUid();
+        //final String profesor = user.getUid();
         final String profesor="S32GgmaLmCSlNmHiMyJ1dedKcEs1";//valor para pruebas sin login
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

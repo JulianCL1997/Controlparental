@@ -33,6 +33,7 @@ public class FragmentAsistencia extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private List<AsistenciaEstudiante> estudianteList;
     private List<String> estudiantes;
+    private List<Boolean> asisEstudiante;
     private AsistenciaAdapter adapter;
     private CursoMateria materia;
     private String fecha;
@@ -54,7 +55,8 @@ public class FragmentAsistencia extends Fragment {
 
         //Inicio arreglos
         estudianteList = new ArrayList<>();
-        estudiantes = new ArrayList<>();
+        estudiantes = new ArrayList<String>();
+        asisEstudiante=new ArrayList<>();
         //fecha del celular
         Calendar calendar = Calendar.getInstance();
         String dia = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
@@ -67,6 +69,7 @@ public class FragmentAsistencia extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Declaramos e inicializamos.
+
         View view = inflater.inflate(R.layout.activity_recycler, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(this.getContext());    // Mirar si tira error.
@@ -75,8 +78,9 @@ public class FragmentAsistencia extends Fragment {
         //Declaramos adaptador e iniciamos recycler
         adapter = new AsistenciaAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         //iniciamos busqueda de los estudiantes del grupo
-        lista(view);
+        lista();
         //listaTest();
         return view;
     }
@@ -89,14 +93,19 @@ public class FragmentAsistencia extends Fragment {
         estudianteList.add(new AsistenciaEstudiante("Emilia", "", true));
     }
 
-    private void lista(final View view) {
+    private void lista() {
         RefMat.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 estudiantes.removeAll(estudiantes);
+                estudianteList.removeAll(estudianteList);
+                asisEstudiante.removeAll(asisEstudiante);
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if (!"profesor".equals(snapshot.getKey()) && !"grupo".equals(snapshot.getKey()))
+                    if (!"profesor".equals(snapshot.getKey()) && !"grupo".equals(snapshot.getKey())) {
                         estudiantes.add(snapshot.getKey());
+                        boolean tes1 = snapshot.child("Asistencias").child(fecha).exists();
+                        asisEstudiante.add(tes1);
+                    }
                 }
                 //filtramos estudiantes
                 RefEst.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -106,17 +115,23 @@ public class FragmentAsistencia extends Fragment {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()
                                 ) {
                             if (estudiantes.contains(snapshot.getKey())) {
-                                final AsistenciaEstudiante value = snapshot.getValue(AsistenciaEstudiante.class);
+                                AsistenciaEstudiante value = snapshot.getValue(AsistenciaEstudiante.class);
+                                boolean tes=asisEstudiante.get(estudiantes.indexOf(snapshot.getKey()));
+                                value.setAsistencia(tes);
+                                estudianteList.add(value);
                                 //se confirma estado de la asistencia
-                                RefMat.child(snapshot.getKey()).child("Asistencias").
+                                /*RefMat.child(snapshot.getKey()).child("Asistencias").
                                         addListenerForSingleValueEvent(new ValueEventListener() {
+
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                                AsistenciaEstudiante value2 = value;
-                                                value2.setAsistencia(dataSnapshot.child(fecha).exists());
-                                                //coloringCardsAssitence(view, dataSnapshot.child(fecha).exists());
-                                                estudianteList.add(value2);
-                                                adapter.notifyDataSetChanged();
+                                                if (!dataSnapshot.child(fecha).exists()) {
+                                                    AsistenciaEstudiante value2 = value;
+                                                    value2.setAsistencia(dataSnapshot.child(fecha).exists());
+                                                    //coloringCardsAssitence(view, dataSnapshot.child(fecha).exists());
+                                                    estudianteList.add(value2);
+                                                    adapter.notifyDataSetChanged();
+                                                }
                                             }
 
                                             @Override
@@ -124,8 +139,9 @@ public class FragmentAsistencia extends Fragment {
 
                                             }
                                         });
-                            }
+                            */}
                         }
+                        adapter.notifyDataSetChanged();
                     }
 
                     @Override
