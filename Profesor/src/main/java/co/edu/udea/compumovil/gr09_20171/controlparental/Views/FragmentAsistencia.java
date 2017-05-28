@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 public class FragmentAsistencia extends Fragment {
 
     private RecyclerView recyclerView;
+    private CardView cardView;
     private LinearLayoutManager linearLayoutManager;
     private List<AsistenciaEstudiante> estudianteList;
     private List<String> estudiantes;
@@ -74,7 +76,7 @@ public class FragmentAsistencia extends Fragment {
         adapter = new AsistenciaAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
         //iniciamos busqueda de los estudiantes del grupo
-        lista();
+        lista(view);
         //listaTest();
         return view;
     }
@@ -87,7 +89,7 @@ public class FragmentAsistencia extends Fragment {
         estudianteList.add(new AsistenciaEstudiante("Emilia", "", true));
     }
 
-    private void lista() {
+    private void lista(final View view) {
         RefMat.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -112,6 +114,7 @@ public class FragmentAsistencia extends Fragment {
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 AsistenciaEstudiante value2 = value;
                                                 value2.setAsistencia(dataSnapshot.child(fecha).exists());
+                                                coloringCardsAssitence(view, dataSnapshot.child(fecha).exists());
                                                 estudianteList.add(value2);
                                                 adapter.notifyDataSetChanged();
                                             }
@@ -138,5 +141,15 @@ public class FragmentAsistencia extends Fragment {
             }
         });
 
+    }
+
+    private void coloringCardsAssitence (View view, boolean exists) {
+        // Colorear las tarjetas cuando detecte asistencia.
+
+        int possitive = view.getResources().getColor(R.color.positive_assistence);
+
+        cardView = (CardView) view.findViewById(R.id.card_view_nota_asis);
+
+        if (exists) {cardView.setBackgroundColor(possitive);}
     }
 }

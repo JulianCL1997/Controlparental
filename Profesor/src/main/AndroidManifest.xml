@@ -16,7 +16,10 @@
 
         <activity android:name=".Views.CursoMateriaView"></activity>
 
-        <activity android:name=".Views.LoginView">
+        <activity
+            android:name=".Views.LoginView"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

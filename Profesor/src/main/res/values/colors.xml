@@ -15,6 +15,8 @@
     <color name="grado">#82929b</color>
     <color name="carview_color1">#D0DCE4</color>
     <color name="cardview_color2">#E7E7E8</color>
+    <color name="positive_assistence">#a9edbd</color>
+    <color name="negative_assistence">#f4c9ca</color>
 
     <!-- Login -->
     <color name="fondo_total">#31978d</color>

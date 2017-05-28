@@ -87,6 +87,7 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView nombre, apellidos;
+        private int color;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -94,6 +95,10 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
             cardView = (CardView) itemView.findViewById(R.id.card_view_nota_asis);
             nombre = (TextView) itemView.findViewById(R.id.nombre_estudiante);
             apellidos = (TextView) itemView.findViewById(R.id.apellido_estudiante);
+
+            color = itemView.getResources().getColor(R.color.negative_assistence);
+
+            cardView.setBackgroundColor(color);
         }
 
     }
