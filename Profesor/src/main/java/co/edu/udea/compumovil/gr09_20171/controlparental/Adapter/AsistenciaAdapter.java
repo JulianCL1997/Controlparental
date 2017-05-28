@@ -2,33 +2,27 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
-import co.edu.udea.compumovil.gr09_20171.controlparental.ConfirmarAsistencia;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Dialogs.ConfirmarAsistencia;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.AsistenciaEstudiante;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
 /**
  * Created by landres.perez on 25/05/17.
  */
 
-public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.ViewHolder>{
+public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.ViewHolder> {
 
     private List<AsistenciaEstudiante> estudianteList;
     private Context context = null;
@@ -62,15 +56,18 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
-                ConfirmarAsistencia dialogo = new ConfirmarAsistencia();
-                Bundle bundle=new Bundle();
-                bundle.putString("apellido",estudianteList.get(position).getApellido());
-                dialogo.setArguments(bundle);
-                dialogo.show(fragmentManager, "tagAlerta");
+                if (!estudianteList.get(position).isAsistencia()) {
+                    FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+                    ConfirmarAsistencia dialogo = new ConfirmarAsistencia();
+                    Bundle bundle = new Bundle();
+                    CursoMateria curso = (CursoMateria) ((FragmentActivity) context).getIntent().getSerializableExtra("materia");
+                    bundle.putSerializable("materia", curso);
+                    bundle.putSerializable("estudiante", estudianteList.get(position));
+                    dialogo.setArguments(bundle);
+                    dialogo.show(fragmentManager, "tagAlerta");
+                }
                 //Toast.makeText(context, "Apellidos: " + estudianteList.get(position).getApellido(),
-                  //      Toast.LENGTH_LONG).show();
+                //      Toast.LENGTH_LONG).show();
             }
         });
 

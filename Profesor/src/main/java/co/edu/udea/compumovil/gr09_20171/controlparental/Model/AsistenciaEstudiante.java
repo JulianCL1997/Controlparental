@@ -1,12 +1,15 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by julian on 27/05/17.
  */
 
-public class AsistenciaEstudiante {
+public class AsistenciaEstudiante implements Serializable{
     private String nombre;
     private String apellido;
+    private String uid;
     private boolean asistencia;
 
     public AsistenciaEstudiante() {
@@ -40,5 +43,13 @@ public class AsistenciaEstudiante {
 
     public void setAsistencia(boolean asistencia) {
         this.asistencia = asistencia;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

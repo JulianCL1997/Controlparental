@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,46 +30,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Materias");
+        DatabaseReference reference = database.getReference("Materias");
 
-      final String profesor="S32GgmaLmCSlNmHiMyJ1dedKcEs1";
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //List<String> existe=new ArrayList<String>();
-                for (DataSnapshot materias:dataSnapshot.getChildren()
-
-                     ) {
-                    for (DataSnapshot grado:materias.getChildren()
-                         ) {
-                        for (DataSnapshot grupo:grado.getChildren()
-                             ) {
-                            String prueva=grupo.child("profesor").getValue(String.class);
-                            if(profesor.equals(grupo.child("profesor").getValue(String.class))){
-                                if(!existe.contains(materias.getKey())){
-                                    existe.add(materias.getKey());
-                                    CursoMateria value=new CursoMateria(
-                                            materias.getKey(),
-                                            grado.getKey(),
-                                            grupo.getKey(),
-                                            profesor);
-                                    cursos.add(value);
-                                }
-                            }
-
-                        }
-
-                    }
-
-                }
-                int fin=1+1;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        Calendar calendar = Calendar.getInstance();
+        String dia = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
+        String mes = String.valueOf(calendar.get(calendar.MONTH) + 1);
+        String anio = String.valueOf(calendar.get(calendar.YEAR));
+        String fecha = dia + "-" + mes + "-" + anio;
+        //Registro si asistio
+        reference.child("Historia").child("9")
+                .child("a").child("97032709625").child("Asistencias").child(fecha).child("Fecha").setValue(fecha);
 
     }
 }
