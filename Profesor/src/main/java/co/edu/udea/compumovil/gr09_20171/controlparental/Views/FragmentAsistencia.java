@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.AsistenciaAdapter;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.AsistenciaEstudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
@@ -27,7 +28,7 @@ public class FragmentAsistencia extends Fragment {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private List<Estudiante> estudianteList;
+    private List<AsistenciaEstudiante> estudianteList;
     private List<String> estudiantes;
     private AsistenciaAdapter adapter;
     private CursoMateria materia;
@@ -86,7 +87,7 @@ public class FragmentAsistencia extends Fragment {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()
                                 ) {
                             if (estudiantes.contains(snapshot.getKey())) {
-                                Estudiante value = snapshot.getValue(Estudiante.class);
+                                AsistenciaEstudiante value = snapshot.getValue(AsistenciaEstudiante.class);
                                 estudianteList.add(value);
                             }
                         }
@@ -114,9 +115,9 @@ public class FragmentAsistencia extends Fragment {
     private void lista() {
         estudianteList = new ArrayList<>();
 
-        estudianteList.add(new Estudiante("Leonardo Andrés", "Perez Castilla"));
-        estudianteList.add(new Estudiante("Karen Marcela", "Perez Castilla"));
-        estudianteList.add(new Estudiante("Donaldo", "Pérez"));
-        estudianteList.add(new Estudiante("Emilia", ""));
+        estudianteList.add(new AsistenciaEstudiante("Leonardo Andrés", "Perez Castilla",true));
+        estudianteList.add(new AsistenciaEstudiante("Karen Marcela", "Perez Castilla",false));
+        estudianteList.add(new AsistenciaEstudiante("Donaldo", "Pérez",false));
+        estudianteList.add(new AsistenciaEstudiante("Emilia", "",true));
     }
 }

@@ -54,7 +54,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent notasView = new Intent(null, NotasView.class);
+
             }
         });
     }
