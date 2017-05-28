@@ -114,7 +114,7 @@ public class FragmentAsistencia extends Fragment {
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 AsistenciaEstudiante value2 = value;
                                                 value2.setAsistencia(dataSnapshot.child(fecha).exists());
-                                                coloringCardsAssitence(view, dataSnapshot.child(fecha).exists());
+                                                //coloringCardsAssitence(view, dataSnapshot.child(fecha).exists());
                                                 estudianteList.add(value2);
                                                 adapter.notifyDataSetChanged();
                                             }
@@ -143,13 +143,5 @@ public class FragmentAsistencia extends Fragment {
 
     }
 
-    private void coloringCardsAssitence (View view, boolean exists) {
-        // Colorear las tarjetas cuando detecte asistencia.
 
-        int possitive = view.getResources().getColor(R.color.positive_assistence);
-
-        cardView = (CardView) view.findViewById(R.id.card_view_nota_asis);
-
-        if (exists) {cardView.setBackgroundColor(possitive);}
-    }
 }

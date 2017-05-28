@@ -25,8 +25,8 @@ public class TabProfesor extends AppCompatActivity {
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent); //Define el contenedor
 
         // Agregar elementos.
-        //tabhost.addTab(tabhost.newTabSpec("asistencia").setIndicator(getString(R.string.asistencia)),
-          //      FragmentAsistencia.class, bundle); // Asistencia.
+        tabhost.addTab(tabhost.newTabSpec("asistencia").setIndicator(getString(R.string.asistencia)),
+                FragmentAsistencia.class, bundle); // Asistencia.
 
         tabhost.addTab(tabhost.newTabSpec("notas").setIndicator(getString(R.string.notas)),
                 FragmentNotas.class, bundle); // Notas.
