@@ -1,10 +1,12 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,9 +16,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Views.CursoMateriaView;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Views.FragmentNota;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Views.LoginView;
 
 /**
  * Created by landres.perez on 25/05/17.
@@ -56,7 +61,16 @@ public class EstudianteAdapter extends RecyclerView.Adapter<EstudianteAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               /* FragmentManager fragmentManager=((AppCompatActivity)context).getSupportFragmentManager();
+                Fragment notas=new FragmentNota();
+                fragmentManager.beginTransaction().replace(android.R.id.tabcontent,notas).commit();
 
+*/
+                Intent intent = new Intent(context, FragmentNota.class);
+                CursoMateria curso = (CursoMateria) ((FragmentActivity) context).getIntent().getSerializableExtra("materia");
+                intent.putExtra("materia",curso);
+                intent.putExtra("estudiante",estudianteList.get(position));
+                context.startActivity(intent);
             }
         });
     }

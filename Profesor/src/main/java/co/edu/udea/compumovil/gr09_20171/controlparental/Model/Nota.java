@@ -9,12 +9,12 @@ import java.io.Serializable;
 public class Nota implements Serializable{
 
     private String desc;
-    private double valor;
+    private String valor;
 
     public Nota() {
     }
 
-    public Nota(String desc, double valor) {
+    public Nota(String desc, String valor) {
         this.desc = desc;
         this.valor = valor;
     }
@@ -27,11 +27,11 @@ public class Nota implements Serializable{
         this.desc = desc;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 }

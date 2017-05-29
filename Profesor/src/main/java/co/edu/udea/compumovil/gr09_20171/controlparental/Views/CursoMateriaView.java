@@ -1,5 +1,6 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -55,8 +56,8 @@ public class CursoMateriaView extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Materias");
-        //final String profesor = user.getUid();
-        final String profesor = "QZqTq4NxzeNiNNv4XQtOxjLQPwJ2";//valor para pruebas sin login
+        final String profesor = user.getUid();
+        //final String profesor = "QZqTq4NxzeNiNNv4XQtOxjLQPwJ2";//valor para pruebas sin login
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -107,9 +108,16 @@ public class CursoMateriaView extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (R.id.logout == item.getItemId()) {
-            Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
+            toLogin();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void toLogin() {
+        Intent intent = new Intent(CursoMateriaView.this, LoginView.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

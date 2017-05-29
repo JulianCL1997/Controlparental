@@ -122,27 +122,7 @@ public class FragmentAsistencia extends Fragment {
                                 boolean tes = asisEstudiante.get(estudiantes.indexOf(snapshot.getKey()));
                                 value.setAsistencia(tes);
                                 estudianteList.add(value);
-                                //se confirma estado de la asistencia
-                                /*RefMat.child(snapshot.getKey()).child("Asistencias").
-                                        addListenerForSingleValueEvent(new ValueEventListener() {
 
-                                            @Override
-                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                if (!dataSnapshot.child(fecha).exists()) {
-                                                    AsistenciaEstudiante value2 = value;
-                                                    value2.setAsistencia(dataSnapshot.child(fecha).exists());
-                                                    //coloringCardsAssitence(view, dataSnapshot.child(fecha).exists());
-                                                    estudianteList.add(value2);
-                                                    adapter.notifyDataSetChanged();
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onCancelled(DatabaseError databaseError) {
-
-                                            }
-                                        });
-                            */
                             }
                         }
                         adapter.notifyDataSetChanged();

@@ -34,7 +34,7 @@ public class ConfirmarAsistencia extends DialogFragment {
 
         //agregamos mensaje del dialogo
         builder.setMessage(getString(R.string.ConfirmaAsistencia)
-                + estudiante.getNombre() + " " + estudiante.getApellido() + "?")
+                +" "+ estudiante.getNombre() + " " + estudiante.getApellido() + "?")
 
                 //agregamos titulo
                 .setTitle("Confirmar asistencia")
@@ -60,6 +60,9 @@ public class ConfirmarAsistencia extends DialogFragment {
                                 .child(estudiante.getUid())
                                 .child("Asistencias")
                                 .child(fecha).child("Fecha").setValue(fecha);
+                        DatabaseReference asistencia=database.getReference("Ultima_Asistencia");
+                        asistencia.child(estudiante.getUid()).child("fecha").setValue(fecha);
+                        asistencia.child(estudiante.getUid()).child("materia").setValue(materia.getMateria());
                         Toast.makeText(getActivity(), R.string.Asistencia_Confirmada, Toast.LENGTH_SHORT).show();
 
                     }

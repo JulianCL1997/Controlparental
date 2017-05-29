@@ -38,7 +38,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(NotasAdapter.ViewHolder holder, int position) {
         holder.desc.setText(notaList.get(position).getDesc());
-        holder.nota.setText((int) notaList.get(position).getValor());
+        holder.nota.setText(String.valueOf(notaList.get(position).getValor()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
