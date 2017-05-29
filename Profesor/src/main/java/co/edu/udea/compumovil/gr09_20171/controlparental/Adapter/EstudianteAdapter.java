@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.gr09_20171.controlparental.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -61,11 +62,16 @@ public class EstudianteAdapter extends RecyclerView.Adapter<EstudianteAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* FragmentManager fragmentManager=((AppCompatActivity)context).getSupportFragmentManager();
+               /*FragmentManager fragmentManager=((FragmentActivity)context).getSupportFragmentManager();
                 Fragment notas=new FragmentNota();
+                Bundle bundle=new Bundle();
+                CursoMateria curso =(CursoMateria)((FragmentActivity)context).getIntent().getSerializableExtra("materia");
+                bundle.putSerializable("materia",curso);
+                bundle.putSerializable("estudiante",estudianteList.get(position));
+                notas.setArguments(bundle);
                 fragmentManager.beginTransaction().replace(android.R.id.tabcontent,notas).commit();
-
 */
+
                 Intent intent = new Intent(context, FragmentNota.class);
                 CursoMateria curso = (CursoMateria) ((FragmentActivity) context).getIntent().getSerializableExtra("materia");
                 intent.putExtra("materia",curso);

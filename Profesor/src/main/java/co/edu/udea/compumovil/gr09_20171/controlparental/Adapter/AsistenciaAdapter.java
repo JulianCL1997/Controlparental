@@ -26,7 +26,6 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
 
     private List<AsistenciaEstudiante> estudianteList;
     private Context context = null;
-    private int pos;
 
     public AsistenciaAdapter(List<AsistenciaEstudiante> estudianteList) {
         this.estudianteList = estudianteList;
@@ -64,7 +63,7 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.Vi
             @Override
             public void onClick(View v) {
                 if (!estudianteList.get(position).isAsistencia()) {
-                    FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+                    FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
                     ConfirmarAsistencia dialogo = new ConfirmarAsistencia();
                     Bundle bundle = new Bundle();
                     CursoMateria curso = (CursoMateria) ((FragmentActivity) context).getIntent().getSerializableExtra("materia");

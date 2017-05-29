@@ -16,5 +16,6 @@
     <!-- Menúes -->
     <string name="logout">Cerrar sesión</string>
     <string name="regresar">Regresar</string>
+    <string name="Nota_Actualizada">Nota Actualizada</string>
 
 </resources>
