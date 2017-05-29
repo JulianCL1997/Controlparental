@@ -59,7 +59,6 @@ public class CursoMateriaAdapter extends RecyclerView.Adapter<CursoMateriaAdapte
                 Intent intent = new Intent(context, TabProfesor.class);
                 intent.putExtra("materia", materiaList.get(position));
                 context.startActivity(intent);
-
             }
         });
     }

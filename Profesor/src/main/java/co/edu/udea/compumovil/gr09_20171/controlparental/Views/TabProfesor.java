@@ -1,7 +1,11 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,7 +36,7 @@ public class TabProfesor extends AppCompatActivity {
                 FragmentAsistencia.class, bundle); // Asistencia.
 
         tabhost.addTab(tabhost.newTabSpec("notas").setIndicator(getString(R.string.notas)),
-                FragmentNotas.class, bundle); // Notas.
+                FragmentEstudiante.class, bundle); // Notas.
     }
 
     @Override
@@ -48,6 +52,7 @@ public class TabProfesor extends AppCompatActivity {
 
         if (R.id.regresar == item.getItemId()) {
             Toast.makeText(this, "Regresar", Toast.LENGTH_SHORT).show();
+
         }
 
         return super.onOptionsItemSelected(item);
