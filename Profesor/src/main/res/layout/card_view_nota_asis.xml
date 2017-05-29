@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/card_view_nota_asis">
+        android:id="@+id/card_view_nota_asis"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="4dp" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -19,7 +24,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:textSize="20sp"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/materia"
+                android:maxLength="26"/>
 
             <TextView
                 android:id="@+id/nombre_estudiante"
@@ -27,7 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/apellido_estudiante"
                 android:textSize="15sp"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textColor="@color/materia"
+                android:maxLength="26"/>
 
         </RelativeLayout>
 

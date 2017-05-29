@@ -57,6 +57,7 @@ public class FragmentNotas extends Fragment {
         View view = inflater.inflate(R.layout.activity_recycler, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setBackgroundColor(getResources().getColor(R.color.fondo_total2));
         linearLayoutManager = new LinearLayoutManager(this.getContext());    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);

@@ -72,13 +72,16 @@ public class FragmentAsistencia extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_recycler, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setBackgroundColor(getResources().getColor(R.color.fondo_total3));
         linearLayoutManager = new LinearLayoutManager(this.getContext());    // Mirar si tira error.
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
+
         //Declaramos adaptador e iniciamos recycler
         adapter = new AsistenciaAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
         //iniciamos busqueda de los estudiantes del grupo
         lista();
         //listaTest();
