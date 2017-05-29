@@ -18,19 +18,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.AsistenciaAdapter;
-import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.NotasAdapter;
+import co.edu.udea.compumovil.gr09_20171.controlparental.Adapter.EstudianteAdapter;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.CursoMateria;
 import co.edu.udea.compumovil.gr09_20171.controlparental.Model.Estudiante;
 import co.edu.udea.compumovil.gr09_20171.controlparental.R;
 
-public class FragmentNotas extends Fragment {
+public class FragmentEstudiante extends Fragment {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private List<String> estudiantes;
     private List<Estudiante> estudianteList;
-    private NotasAdapter adapter;
+    private EstudianteAdapter adapter;
     private CursoMateria materia;
 
     //referencias base de datos
@@ -63,7 +62,7 @@ public class FragmentNotas extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         //Declaramos adaptador e iniciamos recycler
-        adapter = new NotasAdapter(estudianteList);
+        adapter = new EstudianteAdapter(estudianteList);
         recyclerView.setAdapter(adapter);
 
         //iniciamos busqueda de los estudiantes del grupo
