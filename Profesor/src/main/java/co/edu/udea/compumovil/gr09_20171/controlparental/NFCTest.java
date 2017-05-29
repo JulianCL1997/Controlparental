@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class NFCTest extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class NFCTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfctest);
-       textViewBlock = (TextView) findViewById(R.id.block);
+        textViewBlock = (TextView) findViewById(R.id.block);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
@@ -53,8 +55,8 @@ public class NFCTest extends AppCompatActivity {
             if (tag == null) {
                 textViewInfo.setText("tag == null");
             } else {
-
-                readMifareClassic(tag);
+                MifareClassic mifareClassicTag = MifareClassic.get(tag);
+                new ReadMifareClassicTask(mifareClassicTag).execute();
             }
         } else {
             Toast.makeText(this,
@@ -64,11 +66,6 @@ public class NFCTest extends AppCompatActivity {
 
     }
 
-    public void readMifareClassic(Tag tag) {
-        MifareClassic mifareClassicTag = MifareClassic.get(tag);
-
-         new ReadMifareClassicTask(mifareClassicTag).execute();
-    }
 
     private class ReadMifareClassicTask extends AsyncTask<Void, Void, Void> {
 
@@ -79,11 +76,10 @@ public class NFCTest extends AppCompatActivity {
         */
 
         MifareClassic taskTag;
-        int numOfBlock;
         boolean success;
-        final int numOfSector = 32;
-        final int numOfBlockInSector = 4;
-        byte[][][] buffer = new byte[numOfSector][numOfBlockInSector][MifareClassic.BLOCK_SIZE];
+        final int SECTOR_READ = 18;
+        final int BLOCK_READ = 72;
+        byte[] buffer = new byte[MifareClassic.BLOCK_SIZE];
 
         ReadMifareClassicTask(MifareClassic tag) {
             taskTag = tag;
@@ -100,18 +96,13 @@ public class NFCTest extends AppCompatActivity {
 
             try {
                 taskTag.connect();
-               byte[] key= {(byte) 0xa0, (byte) 0xa1, (byte) 0xa2, (byte) 0xa3, (byte) 0xa4, (byte) 0xa5,(byte)0x78,
-                       (byte)0x77, (byte) 0x88,(byte)0x00};
-                for (int s = 18; s < 19; s++) {
-                    if (taskTag.authenticateSectorWithKeyA(s,key)) {
-                        for (int b = 0; b < 1; b++) {
-                            int blockIndex = (s * numOfBlockInSector) + b;
-                            byte[] bloque=taskTag.readBlock(blockIndex);
+                byte[] key = {(byte) 0xa0, (byte) 0xa1, (byte) 0xa2, (byte) 0xa3, (byte) 0xa4, (byte) 0xa5, (byte) 0x78,
+                        (byte) 0x77, (byte) 0x88, (byte) 0x00};
+                if (taskTag.authenticateSectorWithKeyA(SECTOR_READ, key)) {
+                    buffer = taskTag.readBlock(BLOCK_READ);
 
-                            buffer[s][b] = bloque;
-                        }
-                    }
                 }
+
 
                 success = true;
             } catch (IOException e) {
@@ -133,17 +124,16 @@ public class NFCTest extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             //display block
             if (success) {
-                String stringBlock = "";
-                for (int i = 0; i < numOfSector; i++) {
-                    stringBlock += i + " :\n";
-                    for (int j = 0; j < numOfBlockInSector; j++) {
-                        for (int k = 0; k < MifareClassic.BLOCK_SIZE; k++) {
-                            stringBlock += String.format("%02X", buffer[i][j][k] & 0xff) + " ";
-                        }
-                        stringBlock += "\n";
-                    }
-                    stringBlock += "\n";
+                String stringBlock = null;
+                try {
+                    stringBlock = new String(buffer, "UTF-8");
+                    stringBlock = stringBlock.substring(5, stringBlock.length() - 1);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
                 }
+
+                //stringBlock += String.format("%02X", buffer[k] & 0xff) + " ";
+
                 textViewBlock.setText(stringBlock);
             } else {
                 textViewBlock.setText("Fail to read Blocks!!!");
