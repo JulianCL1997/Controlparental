@@ -164,11 +164,12 @@ public class NFCTest extends AppCompatActivity {
                 taskTag.connect();
                byte[] key= {(byte) 0xa0, (byte) 0xa1, (byte) 0xa2, (byte) 0xa3, (byte) 0xa4, (byte) 0xa5,(byte)0x78,
                        (byte)0x77, (byte) 0x88,(byte)0x00};
-                for (int s = 16; s < 19; s++) {
+                for (int s = 18; s < 19; s++) {
                     if (taskTag.authenticateSectorWithKeyA(s,key)) {
-                        for (int b = 0; b < numOfBlockInSector; b++) {
+                        for (int b = 0; b < 1; b++) {
                             int blockIndex = (s * numOfBlockInSector) + b;
                             byte[] bloque=taskTag.readBlock(blockIndex);
+
                             buffer[s][b] = bloque;
                         }
                     }
