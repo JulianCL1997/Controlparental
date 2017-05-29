@@ -162,12 +162,14 @@ public class NFCTest extends AppCompatActivity {
 
             try {
                 taskTag.connect();
-
-                for (int s = 0; s < numOfSector; s++) {
-                    if (taskTag.authenticateSectorWithKeyB(s, MifareClassic.KEY_DEFAULT)) {
+               byte[] key= {(byte) 0xa0, (byte) 0xa1, (byte) 0xa2, (byte) 0xa3, (byte) 0xa4, (byte) 0xa5,(byte)0x78,
+                       (byte)0x77, (byte) 0x88,(byte)0x00};
+                for (int s = 16; s < 19; s++) {
+                    if (taskTag.authenticateSectorWithKeyA(s,key)) {
                         for (int b = 0; b < numOfBlockInSector; b++) {
                             int blockIndex = (s * numOfBlockInSector) + b;
-                            buffer[s][b] = taskTag.readBlock(blockIndex);
+                            byte[] bloque=taskTag.readBlock(blockIndex);
+                            buffer[s][b] = bloque;
                         }
                     }
                 }
