@@ -45,7 +45,7 @@ public class CambiarNota extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_notas, null);
         final DialogTitle tex = (DialogTitle) view.findViewById(R.id.modificar_notas_title);
-        final EditText notav=(EditText)view.findViewById(R.id.nota);
+        final EditText notav = (EditText) view.findViewById(R.id.nota);
         notav.setText(nota.getValor());
         tex.setText(nota.getDesc());
         builder.setTitle("Subir nota").setView(view)
@@ -54,12 +54,12 @@ public class CambiarNota extends DialogFragment {
                         if (!notav.getText().toString().isEmpty() && !notav.getText().toString().equals(nota.getValor())) {
 
                             reference.setValue(notav.getText().toString());
-                            Toast.makeText(getActivity(),getString(R.string.Nota_Actualizada),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.Nota_Actualizada), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Toast.makeText(getActivity(),"Cancelado",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Cancelado", Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });
