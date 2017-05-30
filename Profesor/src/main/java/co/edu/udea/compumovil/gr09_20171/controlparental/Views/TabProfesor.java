@@ -99,7 +99,7 @@ public class TabProfesor extends AppCompatActivity {
         super.onNewIntent(intent);
 
         if (intent.hasExtra(NfcAdapter.EXTRA_TAG)) {
-            Toast.makeText(this, "NfcIntent!", Toast.LENGTH_SHORT).show();
+
             Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             if (tag == null) {
                 //textViewInfo.setText("tag == null");
@@ -207,10 +207,18 @@ public class TabProfesor extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.child(Estudiante).exists()) {
-                                reference.child(Estudiante).child("Asistencias").child(fecha).setValue(fecha);
-                                asis.child(Estudiante).child("fecha").setValue(fecha);
-                                asis.child(Estudiante).child("materia").setValue(materia.getMateria());
+                                if (!dataSnapshot.child(Estudiante).child("Asistencias").child(fecha).exists()) {
+                                    reference.child(Estudiante).child("Asistencias").child(fecha).setValue(fecha);
+                                    asis.child(Estudiante).child("fecha").setValue(fecha);
+                                    asis.child(Estudiante).child("materia").setValue(materia.getMateria());
+                                    Toast.makeText(getApplicationContext(), "Asistencia Registrada", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Asistencia ya registrada", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(getApplicationContext(), "El estudiante no es de este curso", Toast.LENGTH_SHORT).show();
                             }
+
                         }
 
                         @Override
@@ -223,7 +231,7 @@ public class TabProfesor extends AppCompatActivity {
 
                 // txtTagContent.setText(stringBlock);
             } else {
-                //         textViewBlock.setText("Fail to read Blocks!!!");
+                Toast.makeText(getApplicationContext(), "Operacion Cancelada Intente de nuevo", Toast.LENGTH_SHORT).show();
             }
         }
     }
