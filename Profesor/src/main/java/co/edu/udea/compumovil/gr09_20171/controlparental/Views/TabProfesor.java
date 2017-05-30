@@ -61,20 +61,12 @@ public class TabProfesor extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_tabhost, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (R.id.regresar == item.getItemId()) {
-
-            Toast.makeText(this, "Regresar", Toast.LENGTH_SHORT).show();
-
-        }
 
         return super.onOptionsItemSelected(item);
     }

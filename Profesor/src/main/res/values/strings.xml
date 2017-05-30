@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Controlparental</string>
+    <string name="app_name">Profesor</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="asistencia">Asistencia</string>
     <string name="notas">Notas</string>

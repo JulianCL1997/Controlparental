@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/regresar"
-        android:title="@string/regresar"
+        android:title="/regresar"
         app:showAsAction="always" />
 
 </menu>
