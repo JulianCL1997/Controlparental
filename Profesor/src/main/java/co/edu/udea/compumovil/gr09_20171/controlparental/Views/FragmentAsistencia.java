@@ -1,5 +1,8 @@
 package co.edu.udea.compumovil.gr09_20171.controlparental.Views;
 
+import android.content.Intent;
+import android.nfc.tech.MifareClassic;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -16,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -142,6 +147,11 @@ public class FragmentAsistencia extends Fragment {
         });
 
     }
+
+
+
+
+
 
 
 }

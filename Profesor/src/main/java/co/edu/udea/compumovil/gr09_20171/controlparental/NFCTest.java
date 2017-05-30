@@ -46,7 +46,6 @@ public class NFCTest extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
 
-
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
             Toast.makeText(this,
                     "onResume() - ACTION_TAG_DISCOVERED",
