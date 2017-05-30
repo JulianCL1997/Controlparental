@@ -44,18 +44,19 @@ public class NotasView extends AppCompatActivity {
     private DatabaseReference reference;
     private List<Materia> cursos;
     private String estudianteuid;
-private NotificationCompat.Builder mBuilder;
-    private final int mNotificationId= 12345678;
+    private NotificationCompat.Builder mBuilder;
+    private final int mNotificationId = 12345678;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBuilder = new NotificationCompat.Builder(this).setSmallIcon(android.R.drawable.ic_notification_clear_all)
                 .setContentTitle("Asistencia");
         listHash = new HashMap<>();
-        estudianteuid=getIntent().getStringExtra("uid");
+        estudianteuid = getIntent().getStringExtra("uid");
         listDataHeader = new ArrayList<>();
         cursos = new ArrayList<>();
-        database=FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance();
         setContentView(R.layout.list_expandable);
         estudianteTittle = (TextView) findViewById(R.id.nombre);
         listView = (ExpandableListView) findViewById(R.id.lvExp);
@@ -134,9 +135,9 @@ private NotificationCompat.Builder mBuilder;
             public void onCancelled(DatabaseError databaseError) {
 
             }
-    });
+        });
 
-DatabaseReference est=database.getReference("Estudiantes").child(estudianteuid);
+        DatabaseReference est = database.getReference("Estudiantes").child(estudianteuid);
         est.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -208,17 +209,17 @@ DatabaseReference est=database.getReference("Estudiantes").child(estudianteuid);
         listHash.put(listDataHeader.get(3), uwp);
     }
 
-    private  void generar(){
-listDataHeader.removeAll(listDataHeader);
-        for(int i=0;i<cursos.size();i++){
+    private void generar() {
+        listDataHeader.removeAll(listDataHeader);
+        for (int i = 0; i < cursos.size(); i++) {
             listDataHeader.add(cursos.get(i).getMateria());
-            List<String> p=new ArrayList<>();
-            for(int c=0;c<cursos.get(i).getNotas().size();c++){
-                String valor=cursos.get(i).getNotas().get(c).getDesc()+"   "+
+            List<String> p = new ArrayList<>();
+            for (int c = 0; c < cursos.get(i).getNotas().size(); c++) {
+                String valor = cursos.get(i).getNotas().get(c).getDesc() + "   " +
                         cursos.get(i).getNotas().get(c).getValor();
                 p.add(valor);
             }
-            listHash.put(listDataHeader.get(i),p);
+            listHash.put(listDataHeader.get(i), p);
         }
         listAdapter.notifyDataSetChanged();
     }
