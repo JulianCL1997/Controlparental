@@ -3,6 +3,9 @@
     package="co.edu.udea.compumovil.gr09_20171.usuario">
 
     <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,21 +24,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Views.LoginViews">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Views.LoginViews"
+            android:screenOrientation="portrait">
+                    </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".Views.NotasView"
+            android:screenOrientation="portrait">
 
-        </activity>
-
-        <activity android:name=".Views.NotasView">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service android:name=".ServiceAsistencia"/>

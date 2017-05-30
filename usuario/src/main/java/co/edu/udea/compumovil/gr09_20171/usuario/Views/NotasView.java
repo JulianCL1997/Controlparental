@@ -1,6 +1,5 @@
 package co.edu.udea.compumovil.gr09_20171.usuario.Views;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import co.edu.udea.compumovil.gr09_20171.usuario.Adapter.ExpandableListAdapter;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Materia;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Nota;
 import co.edu.udea.compumovil.gr09_20171.usuario.R;
-import co.edu.udea.compumovil.gr09_20171.usuario.ServiceAsistencia;
 
 /**
  * Created by leonardo on 29/05/17.
@@ -111,6 +109,7 @@ public class NotasView extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -181,6 +180,4 @@ public class NotasView extends AppCompatActivity {
         }
         listAdapter.notifyDataSetChanged();
     }
-
-
 }

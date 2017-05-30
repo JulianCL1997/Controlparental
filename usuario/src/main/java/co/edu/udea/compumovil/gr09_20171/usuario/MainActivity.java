@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Timer;
@@ -19,9 +22,10 @@ import co.edu.udea.compumovil.gr09_20171.usuario.Views.NotasView;
 
 public class MainActivity extends AppCompatActivity {
     private static final long LOAD_DATABASE = 200;
-    Asistencia asistencia;
-    NotificationCompat.Builder mBuilder;
-    int mNotificationId = 11123456;
+
+
+
+
     private final String filename = "Estudiante.txt";
     private String estudiante;
 
@@ -29,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 
         try {
