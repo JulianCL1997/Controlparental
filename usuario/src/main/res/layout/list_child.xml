@@ -16,19 +16,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
             android:textColor="@color/materia"
-            android:maxLength="20"
+            android:maxLength="25"
             android:textSize="17dp" />
-
-        <TextView
-            android:id="@+id/nota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="?android:attr/expandableListPreferredItemPaddingLeft"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="40dp"
-            android:maxLength="5"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
 
     </RelativeLayout>
 

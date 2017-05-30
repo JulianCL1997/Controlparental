@@ -20,7 +20,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> listDataHeader;
-    private HashMap<String,List<String>> listHashMap;
+    private HashMap<String, List<String>> listHashMap;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listHashMap) {
         this.context = context;
@@ -81,7 +81,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View view, ViewGroup parent) {
-        final String childText = (String)getChild(groupPosition, childPosition);
+        final String desc_str = (String)getChild(groupPosition, childPosition);
+
         if(view == null)
         {
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -89,9 +90,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView desc = (TextView)view.findViewById(R.id.procede_nota);
-        TextView nota = (TextView)view.findViewById(R.id.nota);
 
-        desc.setText(childText);
+        desc.setText(desc_str);
 
         return view;
     }

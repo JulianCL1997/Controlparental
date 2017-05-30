@@ -3,4 +3,5 @@
     <string name="login_title">Ingreso</string>
     <string name="ingresar">Buscar</string>
     <string name="user_name">Documento</string>
+    <string name="logout">Cerrar sesión</string>
 </resources>
