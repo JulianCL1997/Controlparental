@@ -141,10 +141,12 @@ public class TabProfesor extends AppCompatActivity {
 
         MifareClassic taskTag;
         CursoMateria materia;
+        final String CCTYPE="CC";
         boolean success;
+        final int blocks=2;
         final int SECTOR_READ = 18;
         final int BLOCK_READ = 72;
-        byte[] buffer = new byte[MifareClassic.BLOCK_SIZE];
+        byte[][] buffer = new byte[2][MifareClassic.BLOCK_SIZE];
 
         ReadMifareClassicTask(MifareClassic tag, CursoMateria mat) {
             materia = mat;
@@ -165,8 +167,11 @@ public class TabProfesor extends AppCompatActivity {
                 byte[] key = {(byte) 0xa0, (byte) 0xa1, (byte) 0xa2, (byte) 0xa3, (byte) 0xa4, (byte) 0xa5, (byte) 0x78,
                         (byte) 0x77, (byte) 0x88, (byte) 0x00};
                 if (taskTag.authenticateSectorWithKeyA(SECTOR_READ, key)) {
-                    buffer = taskTag.readBlock(BLOCK_READ);
+                    for(int b=0;b<blocks;b++) {
+                        int index=BLOCK_READ+b;
+                        buffer[b] = taskTag.readBlock(index);
 
+                    }
                 }
 
 
@@ -192,8 +197,13 @@ public class TabProfesor extends AppCompatActivity {
             if (success) {
                 String stringBlock = null;
                 try {
-                    stringBlock = new String(buffer, "UTF-8");
-                    stringBlock = stringBlock.substring(5, stringBlock.length() - 1);
+                    stringBlock = new String(buffer[0], "UTF-8");
+                    String type=stringBlock.substring(1,3);
+                    if(type.equals(CCTYPE)) {
+                        stringBlock = stringBlock.substring(5, stringBlock.length() - 1);
+                    }else{
+                        stringBlock = stringBlock.substring(5, stringBlock.length());
+                    }
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

@@ -16,13 +16,7 @@
         <activity
             android:name=".Views.TabProfesor"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+                    </activity>
         <activity
             android:name=".Views.CursoMateriaView"
             android:screenOrientation="portrait"></activity>
@@ -37,8 +31,6 @@
 
         </activity>
         <activity android:name=".Views.FragmentNota" />
-        <activity android:name=".NFCTest">
-               </activity>
     </application>
 
 </manifest>
