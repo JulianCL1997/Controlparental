@@ -43,19 +43,18 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 
-
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 //iniciar siguiente actividad
-                FirebaseUser user=firebaseAuth.getCurrentUser();
-                if(user!=null){
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
                     Intent intent = new Intent(MainActivity.this, CursoMateriaView.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
 
 
-                }else{
+                } else {
                     Intent intent = new Intent(MainActivity.this, LoginView.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
