@@ -1,6 +1,8 @@
 package co.edu.udea.compumovil.gr09_20171.usuario.Views;
 
 import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 
@@ -19,11 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.usuario.Adapter.ExpandableListAdapter;
+import co.edu.udea.compumovil.gr09_20171.usuario.MainActivity;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Asistencia;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Materia;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Nota;
@@ -34,6 +38,7 @@ import co.edu.udea.compumovil.gr09_20171.usuario.R;
  */
 
 public class NotasView extends AppCompatActivity {
+    private final String filename = "Estudiante.txt";
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -46,6 +51,7 @@ public class NotasView extends AppCompatActivity {
     private String estudianteuid;
     private NotificationCompat.Builder mBuilder;
     private final int mNotificationId = 12345678;
+    private FileOutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,7 +172,16 @@ public class NotasView extends AppCompatActivity {
         if (R.id.logout == item.getItemId()) {
 
             Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
-
+            try {
+                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                outputStream.write("".getBytes());
+                outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Intent intent = new Intent(NotasView.this, LoginViews.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
