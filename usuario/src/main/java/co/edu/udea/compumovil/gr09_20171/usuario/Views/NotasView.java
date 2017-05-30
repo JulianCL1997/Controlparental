@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,12 +25,14 @@ public class NotasView extends AppCompatActivity {
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String,List<String>> listHash;
+    private TextView estudiante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_expandable);
 
+        estudiante = (TextView) findViewById(R.id.nombre);
         listView = (ExpandableListView)findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(this,listDataHeader,listHash);
@@ -37,6 +40,7 @@ public class NotasView extends AppCompatActivity {
     }
 
     private void initData() {
+        estudiante.setText("Leonardo");
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
 
