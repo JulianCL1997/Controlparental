@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Usuario</string>
+    <string name="login_title">Ingreso</string>
+    <string name="ingresar">Buscar</string>
+    <string name="user_name">Documento</string>
 </resources>

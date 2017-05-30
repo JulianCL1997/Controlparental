@@ -3,4 +3,24 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Custom material palette -->
+    <color name="customPrimary">#00897b</color>
+    <color name="customPrimary_dark">#005b4f</color>
+    <color name="customPrimary_ligth">#4ebaaa</color>
+
+    <!-- Colores de cards -->
+    <color name="materia">#515151</color>
+    <color name="grado">#4c5863</color>
+    <color name="carview_color1">#ffffff</color>
+    <color name="cardview_color2">#ebf5f4</color>
+    <color name="positive_assistence">#e7ffe5</color>
+    <color name="negative_assistence">#ffeeee</color>
+
+    <!-- Login e interfaz-->
+    <color name="fondo_total">#31978d</color>
+    <color name="fondo_total2">#55aca4</color>
+    <color name="fondo_total3">#d6e9e7</color>
+    <color name="blanco">#f6f7f7</color>
+
 </resources>
