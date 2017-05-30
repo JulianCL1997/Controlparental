@@ -58,7 +58,7 @@ public class CursoMateriaView extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("Materias");
         final String profesor = user.getUid();
         //final String profesor = "QZqTq4NxzeNiNNv4XQtOxjLQPwJ2";//valor para pruebas sin login
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cursoMateriasList.removeAll(cursoMateriasList);

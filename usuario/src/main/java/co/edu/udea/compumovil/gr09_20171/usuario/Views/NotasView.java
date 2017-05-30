@@ -1,5 +1,7 @@
 package co.edu.udea.compumovil.gr09_20171.usuario.Views;
 
+import android.app.NotificationManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import co.edu.udea.compumovil.gr09_20171.usuario.Adapter.ExpandableListAdapter;
+import co.edu.udea.compumovil.gr09_20171.usuario.Models.Asistencia;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Materia;
 import co.edu.udea.compumovil.gr09_20171.usuario.Models.Nota;
 import co.edu.udea.compumovil.gr09_20171.usuario.R;
@@ -41,17 +44,22 @@ public class NotasView extends AppCompatActivity {
     private DatabaseReference reference;
     private List<Materia> cursos;
     private String estudianteuid;
-
+private NotificationCompat.Builder mBuilder;
+    private final int mNotificationId= 12345678;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mBuilder = new NotificationCompat.Builder(this).setSmallIcon(android.R.drawable.ic_notification_clear_all)
+                .setContentTitle("Asistencia");
         listHash = new HashMap<>();
         estudianteuid=getIntent().getStringExtra("uid");
         listDataHeader = new ArrayList<>();
         cursos = new ArrayList<>();
+        database=FirebaseDatabase.getInstance();
         setContentView(R.layout.list_expandable);
         estudianteTittle = (TextView) findViewById(R.id.nombre);
         listView = (ExpandableListView) findViewById(R.id.lvExp);
+        final DatabaseReference asis = database.getReference("Ultima_Asistencia").child(estudianteuid);
         //initData();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listHash);
         listView.setAdapter(listAdapter);
@@ -62,6 +70,7 @@ public class NotasView extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cursos.removeAll(cursos);
+
                 for (DataSnapshot materias : dataSnapshot.getChildren()
 
                         ) {
@@ -101,6 +110,38 @@ public class NotasView extends AppCompatActivity {
                 Log.d("sintag", "Final");
             }
 
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        final NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        asis.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Asistencia asistencia = dataSnapshot.getValue(Asistencia.class);
+                mBuilder.setContentText("Asistio a " + asistencia.getMateria());
+                Toast.makeText(getApplicationContext(), "Asistio a " + asistencia.getMateria(), Toast.LENGTH_SHORT).show();
+
+                mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+    });
+
+DatabaseReference est=database.getReference("Estudiantes").child(estudianteuid);
+        est.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                estudianteTittle.setText(dataSnapshot.child("nombre").getValue(String.class));
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -168,6 +209,7 @@ public class NotasView extends AppCompatActivity {
     }
 
     private  void generar(){
+listDataHeader.removeAll(listDataHeader);
         for(int i=0;i<cursos.size();i++){
             listDataHeader.add(cursos.get(i).getMateria());
             List<String> p=new ArrayList<>();
