@@ -4,7 +4,7 @@
     android:padding="8dp"
     android:background="@color/blanco"
     android:layout_height="wrap_content"
-    android:elevation="4dp">
+    android:layout_marginBottom="4dp" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,20 +16,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
             android:textColor="@color/materia"
-            android:maxLength="20"
-            android:textSize="17dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/nota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="?android:attr/expandableListPreferredItemPaddingLeft"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="40dp"
-            android:maxLength="5"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:maxLength="25"
+            android:textSize="17dp" />
 
     </RelativeLayout>
 

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:padding="8dp"
-    android:background="@color/cardview_color2"
+    android:background="@color/fondo_total"
     android:layout_height="wrap_content"
     android:elevation="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/Materia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="40dp"
-            android:textColor="@color/materia"
+            android:textColor="@color/cardview_color2"
             android:maxLength="20"
-            android:textSize="17dp"
+            android:textSize="20dp"
+            android:textAllCaps="true"
             android:textStyle="bold"/>
 
     </RelativeLayout>
