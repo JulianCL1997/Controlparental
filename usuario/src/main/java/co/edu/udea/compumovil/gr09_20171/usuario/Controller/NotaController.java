@@ -19,7 +19,7 @@ public class NotaController {
     private FirebaseDatabase database;
     private DatabaseReference reference;
     private List<Nota> notas;
-    private String REF_MATERIAS="Materias";
+    private String REF_MATERIAS="Materia";
     private String REF_NOTAS="NOTAS";
 
     public NotaController() {
@@ -39,7 +39,7 @@ public class NotaController {
                      ) {
                     Nota value=new Nota();
                     value.setDesc(snapshot.getKey());
-                    value.setValor(snapshot.getValue(Float.class));
+                    value.setValor(snapshot.getValue(String.class));
                     notas.add(value);
 
                 }

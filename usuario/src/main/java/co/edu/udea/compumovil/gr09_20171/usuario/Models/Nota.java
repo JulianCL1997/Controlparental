@@ -6,9 +6,14 @@ package co.edu.udea.compumovil.gr09_20171.usuario.Models;
 
 public class Nota {
 private String desc;
-private float valor;
+private String valor;
 
     public Nota() {
+    }
+
+    public Nota(String desc, String valor) {
+        this.desc = desc;
+        this.valor = valor;
     }
 
     public String getDesc() {
@@ -19,11 +24,11 @@ private float valor;
         this.desc = desc;
     }
 
-    public float getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 }
